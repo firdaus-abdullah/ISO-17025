@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MS ISO/IEC 17025:2017 Briefing — Clause Requirements</title>
+<title>MS ISO/IEC 17025:2017 Briefing — Clause Requirements with Examples</title>
 <style>
   :root{
     --navy:#0b2545;
@@ -17,26 +17,28 @@
     --ink:#16202b;
     --grey:#5b6b7c;
     --line:#dfe7ef;
-    --bg:#eef2f7;
+    --bg:#ffffff;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;height:100%;}
   body{
     font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-    background:var(--bg);
+    background:#ffffff;
     color:var(--ink);
     overflow:hidden;
     -webkit-font-smoothing:antialiased;
   }
   .deck{position:relative;height:100vh;overflow:hidden;}
 
+  /* ---------- SLIDES (all white) ---------- */
   .slide{
     position:absolute;inset:0;
     display:none;
     padding:42px 58px 118px;
     overflow-y:auto;
-    background:#fff;
+    background:#ffffff;
     animation:fade .28s ease;
+    cursor:pointer;
   }
   .slide.active{display:block;}
   @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
@@ -50,7 +52,7 @@
     background:var(--blue-l);
     padding:5px 12px;border-radius:20px;margin-bottom:14px;
   }
-  h1{font-size:44px;line-height:1.12;margin:0 0 14px;letter-spacing:-.02em;}
+  h1{font-size:44px;line-height:1.12;margin:0 0 14px;letter-spacing:-.02em;color:var(--navy);}
   h2{font-size:31px;line-height:1.2;margin:0 0 6px;color:var(--navy);letter-spacing:-.015em;}
   h3{font-size:17px;margin:22px 0 8px;color:var(--navy2);letter-spacing:.01em;}
   h3:first-child{margin-top:0;}
@@ -103,29 +105,75 @@
   table.ct td.c{font-weight:700;color:var(--blue);white-space:nowrap;}
   table.ct td b{color:var(--navy);}
 
-  .title-slide,.sec-slide{
-    background:linear-gradient(135deg,#0b2545 0%,#13315c 48%,#0f4c75 100%);
-    color:#fff;display:none;
+  /* ---------- EXAMPLES CARD ---------- */
+  .examples{
+    background:#f0f7ff;
+    border:1px solid #d6e8fa;
+    border-left:4px solid var(--blue);
+    border-radius:10px;
+    padding:16px 20px;
+    margin-top:18px;
   }
-  .title-slide.active,.sec-slide.active{display:flex;flex-direction:column;justify-content:center;}
-  .title-slide h1,.sec-slide h1{color:#fff;}
-  .title-slide .kicker,.sec-slide .kicker{background:rgba(255,255,255,.14);color:#8fd0ff;}
-  .title-slide p,.sec-slide p{color:#c3d6e8;}
-  .title-slide .rule,.sec-slide .rule{background:#4fb3ff;}
+  .examples h4{
+    margin:0 0 10px;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--blue);
+    font-weight:700;
+  }
+  .examples ul{
+    margin:0;padding:0;list-style:none;
+  }
+  .examples li{
+    position:relative;
+    padding:5px 0 5px 22px;
+    font-size:13.8px;
+    line-height:1.55;
+    color:#2c3a49;
+  }
+  .examples li::before{
+    content:"▸";
+    position:absolute;left:4px;top:5px;
+    color:var(--blue);font-weight:700;
+  }
+  .examples li b{color:var(--navy);}
+
+  /* ---------- TITLE & SECTION SLIDES (white background) ---------- */
+  .title-slide,.sec-slide{
+    background:#ffffff;
+    color:var(--ink);
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .title-slide.active,.sec-slide.active{display:flex;}
+  .title-slide h1,.sec-slide h1{color:var(--navy);}
+  .title-slide .kicker,.sec-slide .kicker{
+    background:var(--blue-l);color:var(--blue);
+  }
+  .title-slide .rule,.sec-slide .rule{background:var(--blue);}
   .sec-slide .big-num{
-    font-size:110px;font-weight:800;line-height:1;color:rgba(255,255,255,.14);
-    letter-spacing:-.05em;margin-bottom:-12px;
+    font-size:120px;font-weight:800;line-height:1;
+    color:#e8f2fb;
+    letter-spacing:-.05em;margin-bottom:-16px;
+  }
+  .title-slide::before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg, #1479c9, #0aa39a, #e0a020);
   }
   .byline{
-    margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);
-    font-size:14px;color:#a9c4dd;letter-spacing:.02em;
+    margin-top:30px;padding-top:18px;border-top:1px solid #dfe7ef;
+    font-size:14px;color:var(--grey);letter-spacing:.02em;
   }
-  .byline b{color:#fff;font-weight:600;}
+  .byline b{color:var(--navy);font-weight:600;}
 
+  /* ---------- HUD ---------- */
   .hud{
     position:fixed;left:0;right:0;bottom:0;height:66px;z-index:60;
     display:flex;align-items:center;gap:18px;padding:0 26px;
-    background:rgba(255,255,255,.93);
+    background:rgba(255,255,255,.95);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
     border-top:1px solid #dbe3ec;
@@ -145,6 +193,7 @@
   .progress{position:fixed;bottom:66px;left:0;height:3px;background:var(--blue);width:0;
     z-index:61;transition:width .28s ease;}
 
+  /* ---------- MENU ---------- */
   .menu{
     position:fixed;inset:0;z-index:90;background:rgba(9,25,45,.97);
     padding:48px 56px 80px;overflow-y:auto;display:none;
@@ -169,12 +218,23 @@
   }
   .note b{color:#8a6a08;}
 
+  .hint{
+    position:fixed;bottom:80px;right:26px;z-index:59;
+    font-size:12px;color:#9aa9b8;background:rgba(255,255,255,.9);
+    padding:5px 12px;border-radius:16px;border:1px solid #e3eaf2;
+    pointer-events:none;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
+
   @media (max-width:900px){
     .slide{padding:28px 24px 118px;}
     h1{font-size:32px;} h2{font-size:24px;}
     .grid2,.grid3{grid-template-columns:1fr;}
     .hud .title-mini{display:none;}
     .menu{padding:70px 22px 60px;}
+    .hint{display:none;}
+    .sec-slide .big-num{font-size:80px;}
   }
 
   @media print{
@@ -182,7 +242,7 @@
     .deck{height:auto;}
     .slide{position:static;display:block !important;page-break-after:always;padding:30px;overflow:visible;animation:none;}
     .title-slide,.sec-slide{display:flex !important;}
-    .hud,.progress,.menu{display:none !important;}
+    .hud,.progress,.menu,.hint{display:none !important;}
   }
 </style>
 </head>
@@ -194,11 +254,11 @@
   <section class="slide title-slide active" data-title="Title">
     <span class="kicker">MS ISO/IEC 17025:2017 Briefing</span>
     <h1>MS ISO/IEC 17025:2017</h1>
-    <h1 style="font-size:27px;font-weight:400;color:#9fc6e6;margin-bottom:22px;">General Requirements for the Competence of Testing &amp; Calibration Laboratories</h1>
+    <h1 style="font-size:27px;font-weight:400;color:#5b6b7c;margin-bottom:22px;">General Requirements for the Competence of Testing &amp; Calibration Laboratories</h1>
     <div class="rule"></div>
     <p style="max-width:760px;font-size:16px;">
       A clause-by-clause presentation of the real requirements of MS ISO/IEC 17025:2017,
-      covering Clauses 4 to 8 and the Annexes.
+      covering Clauses 4 to 8 and the Annexes — each with practical examples.
     </p>
     <div class="byline">
       Prepared by <b>Muhammad Firdaus Abdullah</b><br>
@@ -233,7 +293,7 @@
     <div class="big-num">04</div>
     <h1>General Requirements</h1>
     <div class="rule"></div>
-    <p style="font-size:17px;">4.1 Impartiality &nbsp;·&nbsp; 4.2 Confidentiality</p>
+    <p style="font-size:17px;color:#5b6b7c;">4.1 Impartiality &nbsp;·&nbsp; 4.2 Confidentiality</p>
   </section>
 
   <!-- 4 · 4.1 IMPARTIALITY -->
@@ -253,9 +313,13 @@
         </tbody>
       </table>
     </div>
-    <div class="note">
-      <b>Key point:</b> Impartiality is a continuous obligation — the laboratory must identify, monitor and
-      manage risks to impartiality on an ongoing basis.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li>Signed <b>impartiality declaration forms</b> for all employees and contracted personnel, refreshed annually.</li>
+        <li>A <b>risk register</b> identifying threats from commercial relationships — for example, a parent company that also supplies products to the laboratory's customers.</li>
+        <li><b>Management review minutes</b> recording the annual review of impartiality risks and the mitigation actions taken.</li>
+      </ul>
     </div>
   </section>
 
@@ -275,9 +339,13 @@
         </tbody>
       </table>
     </div>
-    <div class="note">
-      <b>Key point:</b> Confidentiality obligations extend to all personnel, including contracted,
-      seconded and temporary personnel.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Signed confidentiality agreements</b> for employees, contractors and temporary staff, with defined consequences for breach.</li>
+        <li><b>Contract clauses</b> stating that the laboratory will notify the customer before legally compelled to disclose confidential information.</li>
+        <li><b>Separate storage and access controls</b> for customer-supplied information received from third parties, so the source is not revealed to the customer without consent.</li>
+      </ul>
     </div>
   </section>
 
@@ -286,7 +354,7 @@
     <div class="big-num">05</div>
     <h1>Structural Requirements</h1>
     <div class="rule"></div>
-    <p style="font-size:17px;">5.1 – 5.7 &nbsp;·&nbsp; Legal entity, management, scope, organisation &amp; responsibility</p>
+    <p style="font-size:17px;color:#5b6b7c;">5.1 – 5.7 &nbsp;·&nbsp; Legal entity, management, scope, organisation &amp; responsibility</p>
   </section>
 
   <!-- 7 · 5.1–5.3 -->
@@ -303,6 +371,14 @@
           <tr><td class="c">5.3</td><td>The laboratory shall <b>define and document the range of laboratory activities</b> for which it conforms to MS ISO/IEC 17025:2017. This shall cover work carried out in permanent facilities, sites away from permanent facilities, associated temporary or mobile facilities, and customer facilities. The activities shall conform to <b>customer and regulatory requirements</b>.</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>ACRA business registration certificate</b> and company registration number kept on file as evidence of legal entity status.</li>
+        <li><b>Organisation chart</b> showing the laboratory's position within the parent organisation and the reporting line to top management.</li>
+        <li><b>Documented scope of accreditation</b> listing permanent laboratory tests, mobile facility activities and customer-site work.</li>
+      </ul>
     </div>
   </section>
 
@@ -337,6 +413,14 @@
         </tbody>
       </table>
     </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Job descriptions</b> for the laboratory manager, technical manager, quality manager and approved signatories, defining responsibilities and authority.</li>
+        <li><b>Procedure for communicating management system changes</b> to all staff — for example, briefing sessions, email notices and training records.</li>
+        <li><b>Staffing plan</b> showing sufficient authorised personnel for the current and forecast workload, with named deputies.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 9 · CLAUSE 6 DIVIDER -->
@@ -344,7 +428,7 @@
     <div class="big-num">06</div>
     <h1>Resource Requirements</h1>
     <div class="rule"></div>
-    <p style="font-size:17px;">6.1 General &nbsp;·&nbsp; 6.2 Personnel &nbsp;·&nbsp; 6.3 Facilities &nbsp;·&nbsp; 6.4 Equipment &nbsp;·&nbsp; 6.5 Traceability &nbsp;·&nbsp; 6.6 External providers</p>
+    <p style="font-size:17px;color:#5b6b7c;">6.1 General &nbsp;·&nbsp; 6.2 Personnel &nbsp;·&nbsp; 6.3 Facilities &nbsp;·&nbsp; 6.4 Equipment &nbsp;·&nbsp; 6.5 Traceability &nbsp;·&nbsp; 6.6 External providers</p>
   </section>
 
   <!-- 10 · 6.1 + 6.2 PERSONNEL -->
@@ -379,6 +463,14 @@
         </tbody>
       </table>
     </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Training and competency matrix</b> linking each function to the required education, training, technical knowledge, skills and experience.</li>
+        <li><b>Signed authorisation records</b> naming approved signatories for specific test or calibration methods.</li>
+        <li><b>Personnel files</b> containing CVs, qualification certificates, training records and competency assessment results.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 11 · 6.3 FACILITIES -->
@@ -407,6 +499,14 @@
         </tbody>
       </table>
     </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Temperature and humidity monitoring records</b> for a controlled weighing room or calibration laboratory.</li>
+        <li><b>Access control system</b> restricting entry to authorised personnel, with visitor logs and escort arrangements.</li>
+        <li><b>Procedure for performing tests at customer sites</b>, including environmental checks, temporary facility setup and segregation from incompatible activities.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 12 · 6.4 EQUIPMENT PART 1 -->
@@ -427,6 +527,14 @@
           <tr><td class="c">6.4.8</td><td>Equipment requiring calibration or which has a defined period of validity shall be <b>labelled, coded or identified</b>.</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Calibration programme</b> with due dates, intervals and acceptance criteria for all measuring equipment.</li>
+        <li><b>Equipment master list</b> with unique IDs, locations, calibration intervals and responsible personnel.</li>
+        <li><b>Verification records</b> showing a newly purchased instrument was checked against specified requirements before being placed into service.</li>
+      </ul>
     </div>
   </section>
 
@@ -460,6 +568,14 @@
         </tbody>
       </table>
     </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Out-of-service tags</b> and an <b>impact assessment record</b> when an instrument fails calibration, showing which results may be affected.</li>
+        <li><b>Interim checks</b> — for example, daily balance checks or weekly thermometer verification — recorded between annual calibrations.</li>
+        <li><b>Equipment history file</b> containing damage, repair and modification records, with dates and responsible personnel.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 14 · 6.5 TRACEABILITY -->
@@ -477,9 +593,13 @@
         </tbody>
       </table>
     </div>
-    <div class="note">
-      <b>Key point:</b> Traceability is not just a certificate on file — the laboratory must be able to
-      demonstrate the <b>chain</b> and how each link contributes to the reported measurement uncertainty.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Calibration certificates</b> from a national metrology institute (NMI) or an accredited calibration laboratory, showing traceability to SI units.</li>
+        <li><b>Certified reference materials (CRMs)</b> with certificates stating traceability to SI units and the associated uncertainty.</li>
+        <li><b>Traceability chart</b> showing the unbroken chain from working standards through reference standards to the SI realisation.</li>
+      </ul>
     </div>
   </section>
 
@@ -506,15 +626,13 @@
         </tbody>
       </table>
     </div>
-    <h3>Typical externally provided items</h3>
-    <div>
-      <span class="pill">Calibration services</span>
-      <span class="pill">Reference materials / CRMs</span>
-      <span class="pill">Proficiency testing schemes</span>
-      <span class="pill">Subcontracted tests</span>
-      <span class="pill">Consumables &amp; reagents</span>
-      <span class="pill">Maintenance &amp; servicing</span>
-      <span class="pill">LIMS / software</span>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Approved supplier list</b> with evaluation criteria, performance monitoring notes and re-evaluation dates.</li>
+        <li><b>Purchase specifications</b> defining the technical requirements for calibration services, reference materials or subcontracted tests.</li>
+        <li><b>Contracts with external calibration providers</b> stating the required traceability, uncertainty and reporting requirements.</li>
+      </ul>
     </div>
   </section>
 
@@ -523,7 +641,7 @@
     <div class="big-num">07</div>
     <h1>Process Requirements</h1>
     <div class="rule"></div>
-    <p style="font-size:17px;">7.1 – 7.11 &nbsp;·&nbsp; The technical heart of the standard</p>
+    <p style="font-size:17px;color:#5b6b7c;">7.1 – 7.11 &nbsp;·&nbsp; The technical heart of the standard</p>
   </section>
 
   <!-- 17 · 7.1 CONTRACTS -->
@@ -550,6 +668,14 @@
       <li><b>7.1.3</b> — The laboratory shall <b>cooperate with customers</b> or their representatives in clarifying the customer's request and in monitoring the laboratory's performance in relation to the work performed.</li>
       <li><b>7.1.4</b> — Methods shall be selected and verified or validated in accordance with Clause 7.2.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Signed contract review records</b> for each customer request, showing capability, resources and method selection were checked.</li>
+        <li><b>Documented decision rule</b> agreed with the customer when a statement of conformity is required — for example, simple acceptance or a guard band.</li>
+        <li><b>Records of customer notification</b> when a deviation from the contract occurs after work has commenced, including the repeated review and affected personnel notified.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 18 · 7.2.1 -->
@@ -570,6 +696,14 @@
           <tr><td class="c">7.2.1.7</td><td>Any deviations to methods shall be <b>documented, justified, authorized and accepted by the customer</b> prior to performing them.</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Verification records</b> showing a new test method was successfully performed and achieved the required performance before use.</li>
+        <li><b>Controlled method library</b> with current versions available at the bench, and obsolete versions clearly withdrawn.</li>
+        <li><b>Documented customer acceptance</b> for a deviation from a standard method, signed before the work was performed.</li>
+      </ul>
     </div>
   </section>
 
@@ -609,6 +743,14 @@
         </tbody>
       </table>
     </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Validation report</b> for a laboratory-developed method, including selectivity, linearity, accuracy, precision and uncertainty.</li>
+        <li><b>Records of method modification</b> and re-validation when a standard method has been adapted or changed.</li>
+        <li><b>Statement of fitness for intended use</b> for a non-standard sampling or test method, signed by the technical manager.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 20 · 7.3 SAMPLING + 7.4 ITEMS -->
@@ -639,6 +781,14 @@
           <tr><td class="c">7.4.4</td><td>For items requiring <b>storage under specific environmental conditions</b>, the laboratory shall maintain, monitor and record these conditions.</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Sampling plan available at the sampling site</b>, describing the sampling method and the factors to be controlled.</li>
+        <li><b>Unique item identification labels</b> that prevent mix-ups between samples, with the identification retained throughout the laboratory's custody.</li>
+        <li><b>Records of item receipt conditions</b>, including any deviations from specified conditions notified to the customer with their instructions.</li>
+      </ul>
     </div>
   </section>
 
@@ -682,6 +832,14 @@
       <li><b>7.6.2</b> — For laboratories performing calibrations, including of its own equipment, the <b>measurement uncertainty for all calibrations shall be evaluated</b>.</li>
       <li><b>7.6.3</b> — For laboratories performing testing, the <b>measurement uncertainty shall be evaluated</b>. If it is not possible to evaluate the measurement uncertainty, an estimation of the uncertainty shall be made.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Technical records</b> with date, personnel identity and raw data, sufficient to repeat the activity under conditions as close as possible to the original.</li>
+        <li><b>Uncertainty budget</b> for a calibration method, identifying each contribution and its magnitude.</li>
+        <li><b>Amendment log</b> showing the date of alteration, the altered aspects and the personnel responsible for the change.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 22 · 7.7 -->
@@ -699,15 +857,13 @@
         </tbody>
       </table>
     </div>
-    <h3>Typical monitoring activities</h3>
-    <div>
-      <span class="pill">Use of reference materials</span>
-      <span class="pill">Proficiency testing</span>
-      <span class="pill">Inter-laboratory comparisons</span>
-      <span class="pill">Replicate tests</span>
-      <span class="pill">Control charts</span>
-      <span class="pill">Retained item re-testing</span>
-      <span class="pill">Blank &amp; spike samples</span>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Participation in proficiency testing schemes</b> with satisfactory results, and records of investigation for any unsatisfactory result.</li>
+        <li><b>Control charts</b> used to monitor results over time, with pre-defined criteria for triggering action.</li>
+        <li><b>Procedure for analysing monitoring data</b> and initiating corrective action when results fall outside pre-defined criteria.</li>
+      </ul>
     </div>
   </section>
 
@@ -724,7 +880,7 @@
       <ul class="ck tight">
         <li><b>a)</b> A title (e.g. "Test Report", "Calibration Certificate" or "Report of Sampling")</li>
         <li><b>b)</b> Name and address of the laboratory</li>
-        <li><b>c)</b> Location of performance of the laboratory activities (including customer facility, sites away, temporary or mobile facilities)</li>
+        <li><b>c)</b> Location of performance of the laboratory activities</li>
         <li><b>d)</b> Unique identification that all components are recognized as a portion of a complete report, and a clear identification of the end</li>
         <li><b>e)</b> Name and contact information of the customer</li>
         <li><b>f)</b> Identification of the method used</li>
@@ -742,9 +898,13 @@
         <li><b>p)</b> Clear identification when results are from external providers</li>
       </ul>
     </div>
-    <div class="note">
-      <b>7.8.2.2</b> — When applicable, the laboratory shall clearly identify in its reports which
-      information and/or sample is <b>provided by the customer</b>.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Report review and authorisation checklist</b> used before any result is released to the customer.</li>
+        <li><b>Report template</b> containing all required common elements — title, laboratory address, unique identification, method, item description, dates, results and authorisation.</li>
+        <li><b>Clear identification in the report</b> of which information and/or sample is provided by the customer (7.8.2.2).</li>
+      </ul>
     </div>
   </section>
 
@@ -759,10 +919,7 @@
     <ul class="ck tight">
       <li><b>a)</b> Information on specific test conditions, such as environmental conditions</li>
       <li><b>b)</b> Where relevant, a statement of conformity with requirements or specifications</li>
-      <li><b>c)</b> Where applicable, the measurement uncertainty presented in the same unit as the measurand, or in a term relative to the measurand (e.g. percent), when:<br>
-        — it is relevant to the validity or application of the test results;<br>
-        — a customer's instruction so requires; or<br>
-        — the measurement uncertainty affects conformity to a specification limit</li>
+      <li><b>c)</b> Where applicable, the measurement uncertainty presented in the same unit as the measurand, or in a term relative to the measurand (e.g. percent)</li>
       <li><b>d)</b> Where appropriate, opinions and interpretations</li>
       <li><b>e)</b> Additional information which may be required by specific methods, authorities, customers or groups of customers</li>
     </ul>
@@ -781,12 +938,20 @@
     <h3>7.8.5 — Specific requirements for sampling reports</h3>
     <ul class="ck tight">
       <li>The date of sampling</li>
-      <li>Unique identification of the item or material sampled (including manufacturer name, model/type designation and serial numbers as appropriate)</li>
+      <li>Unique identification of the item or material sampled</li>
       <li>The location of sampling, including any diagrams, sketches or photographs</li>
       <li>A reference to the sampling plan and sampling method</li>
       <li>Details of any environmental conditions during sampling that affect the interpretation of results</li>
       <li>Information required to evaluate measurement uncertainty for subsequent testing or calibration</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Test report stating measurement uncertainty</b> when it is relevant to the validity or application of the test results, or when the customer requires it.</li>
+        <li><b>Calibration certificate</b> stating metrological traceability and the results before and after any adjustment or repair.</li>
+        <li><b>Sampling report</b> including the date of sampling, location, sampling plan reference and environmental conditions during sampling.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 25 · 7.8.6–7.8.8 -->
@@ -817,6 +982,14 @@
       <li><b>7.8.8.2</b> — When changes are made to a report after it has been issued, the laboratory shall issue it as a <b>further document</b> which includes the statement "Amendment to report, serial number" or other equivalent form of wording.</li>
       <li><b>7.8.8.3</b> — When issuing a <b>completely new report</b>, the laboratory shall issue a <b>unique identification</b> to this report and include a <b>reference to the original report</b>.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Documented decision rule</b> (e.g. simple acceptance, guard band) used in conformity statements, with the rule clearly stated in the report.</li>
+        <li><b>Amended report issued as a further document</b> with the statement "Amendment to report, serial number…" and the reasons for the change.</li>
+        <li><b>New report with a unique ID</b> referencing the original report, when a completely new report is issued after changes.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 26 · 7.9 COMPLAINTS -->
@@ -845,6 +1018,14 @@
           <tr><td class="c">7.9.7</td><td>Where possible, the laboratory shall give <b>formal notice of the end</b> of the complaint handling to the complainant.</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Documented complaint procedure</b> available to customers on request, describing how complaints are received, validated, investigated and decided.</li>
+        <li><b>Complaint log</b> tracking receipt, investigation, actions taken and closure, with the outcome communicated to the complainant.</li>
+        <li><b>Formal notice of the end of complaint handling</b> sent to the complainant, with the person reviewing the outcome not involved in the original laboratory activity.</li>
+      </ul>
     </div>
   </section>
 
@@ -876,6 +1057,14 @@
       <li><b>7.11.5</b> — Instructions, manuals and reference data relevant to the laboratory information management system(s) shall be <b>made readily available</b> to personnel.</li>
       <li><b>7.11.6</b> — Calculations and data transfers shall be <b>checked</b> in an appropriate and systematic manner.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Procedure for halting work and withholding results</b> when nonconforming work is detected, with defined responsibilities and authorities.</li>
+        <li><b>Records of nonconforming work</b>, including cause analysis, actions taken and the results of any corrective action.</li>
+        <li><b>Validated LIMS</b> with audit trails, backup, controlled access and documented checks of calculations and data transfers.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 28 · CLAUSE 8 DIVIDER -->
@@ -883,7 +1072,7 @@
     <div class="big-num">08</div>
     <h1>Management System Requirements</h1>
     <div class="rule"></div>
-    <p style="font-size:17px;">8.1 – 8.9 &nbsp;·&nbsp; Options A &amp; B</p>
+    <p style="font-size:17px;color:#5b6b7c;">8.1 – 8.9 &nbsp;·&nbsp; Options A &amp; B</p>
   </section>
 
   <!-- 29 · 8.1 OPTIONS -->
@@ -915,9 +1104,13 @@
         specified in 8.2 to 8.9.</p>
       </div>
     </div>
-    <div class="note">
-      <b>Key point:</b> Whichever option is chosen, the laboratory must still demonstrate the
-      <b>technical competence</b> requirements of Clauses 4 to 7 in full.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Quality manual</b> documenting the management system per Option A, addressing Clauses 8.2 to 8.9 directly.</li>
+        <li><b>ISO 9001:2015 certificate</b> for the organisation choosing Option B, with a cross-reference matrix linking ISO 9001 clauses to MS ISO/IEC 17025 requirements.</li>
+        <li><b>Evidence that the chosen option supports consistent fulfilment</b> of the technical requirements of Clauses 4 to 7.</li>
+      </ul>
     </div>
   </section>
 
@@ -933,6 +1126,14 @@
       <li><b>8.2.4</b> — All documentation, processes, systems, records, etc. shall be <b>included, referenced or linked</b> to the management system.</li>
       <li><b>8.2.5</b> — All personnel involved in laboratory activities shall have <b>access</b> to the parts of the management system documentation and related information that are applicable to their responsibilities.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Quality policy signed by top management</b> and communicated to all staff, with acknowledgement records.</li>
+        <li><b>Quality objectives</b> addressing competence, impartiality and consistent operation, with measurable targets and review dates.</li>
+        <li><b>Management review records</b> demonstrating commitment to the development, implementation and continual improvement of the management system.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 31 · 8.3 + 8.4 -->
@@ -961,8 +1162,13 @@
       <li><b>8.4.1</b> — The laboratory shall <b>establish and retain legible records</b> to demonstrate fulfilment of Section 8.4.</li>
       <li><b>8.4.2</b> — The laboratory shall implement the controls needed for the <b>identification, storage, protection, back-up, archive, retrieval, retention time and disposal</b> of its records. Access to these records shall be <b>readily available</b> and consistent with the confidentiality arrangements.</li>
     </ul>
-    <div class="note">
-      <b>Note:</b> As a guide, important records should be kept at least through <b>one accreditation cycle</b>.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Document control procedure</b> with a master list, revision status, approval records and controlled distribution.</li>
+        <li><b>Records retention schedule</b> specifying retention times, storage conditions and disposal methods for different record types.</li>
+        <li><b>Controlled access to records</b> consistent with confidentiality arrangements, with back-up and archive arrangements in place.</li>
+      </ul>
     </div>
   </section>
 
@@ -989,6 +1195,14 @@
       <li><b>8.6.1</b> — The laboratory shall <b>identify and select opportunities for improvement</b> and implement any necessary actions.</li>
       <li><b>8.6.2</b> — The laboratory shall <b>seek feedback</b>, both positive and negative, from its customers. The laboratory shall <b>analyse the feedback</b> for purposes of improving the management system, laboratory activities and customer service.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Risk register</b> identifying risks and opportunities associated with laboratory activities, with action plans and responsible persons.</li>
+        <li><b>Customer feedback survey</b> analysed for improvement opportunities, with actions taken and effectiveness reviewed.</li>
+        <li><b>Effectiveness review</b> of actions taken to address risks and opportunities, with updates to the risk register as needed.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 33 · 8.7 -->
@@ -1019,6 +1233,14 @@
     <ul class="ck" style="margin-top:10px;">
       <li><b>8.7.2 / 8.7.3</b> — Corrective actions shall be <b>appropriate to the effects</b> of the nonconformities encountered. Records of nonconformities, causes and any subsequent actions taken shall be retained.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Nonconformity report</b> with root cause analysis and corrective action, signed by the responsible manager.</li>
+        <li><b>Effectiveness review</b> of the corrective action taken, with evidence that the nonconformity has not recurred.</li>
+        <li><b>Updated risk register</b> following the corrective action, reflecting any changes to risks and opportunities.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 34 · 8.8 -->
@@ -1036,7 +1258,7 @@
       </li>
       <li><b>8.8.2</b> — The laboratory shall:
         <ul class="ck tight" style="margin-top:6px">
-          <li><b>a)</b> plan, establish, implement and maintain an <b>audit programme</b> including the frequency, methods, responsibilities, planning requirements and reporting — taking into consideration the importance of the laboratory activities concerned, changes affecting the laboratory, and the results of previous audits;</li>
+          <li><b>a)</b> plan, establish, implement and maintain an <b>audit programme</b> including the frequency, methods, responsibilities, planning requirements and reporting;</li>
           <li><b>b)</b> define the <b>audit criteria and scope</b> for each audit;</li>
           <li><b>c)</b> ensure that the <b>results of the audits are reported to relevant management</b>;</li>
           <li><b>d)</b> implement appropriate <b>correction and corrective actions without undue delay</b>;</li>
@@ -1044,6 +1266,14 @@
         </ul>
       </li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Internal audit programme</b> covering all clauses over the accreditation cycle, with frequency, methods and responsibilities defined.</li>
+        <li><b>Internal audit report</b> with findings, audit criteria and scope, reported to relevant management.</li>
+        <li><b>Records showing corrective actions from audits</b> implemented without undue delay, with effectiveness reviewed.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 35 · 8.9 -->
@@ -1078,6 +1308,14 @@
       </li>
       <li><b>8.9.3</b> — The <b>outputs</b> of management review shall be recorded, including decisions and actions related to improvement, resource needs and changes to the management system.</li>
     </ul>
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Management review meeting minutes</b> with all required inputs recorded, including audit outcomes, corrective actions and customer feedback.</li>
+        <li><b>Decisions and actions from management review</b> with responsible persons and deadlines, recorded as outputs.</li>
+        <li><b>Follow-up on actions from previous management reviews</b>, with status updates and evidence of completion.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 36 · ANNEX A -->
@@ -1095,9 +1333,13 @@
         </tbody>
       </table>
     </div>
-    <div class="note">
-      <b>Key point:</b> Annex A supports Clause 6.5 by setting out the detailed requirements for
-      metrological traceability.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Calibration certificates from an NMI</b> demonstrating traceability to SI units, kept on file for each reference standard.</li>
+        <li><b>Certified reference materials</b> with traceability statements and uncertainty values, used for calibration or quality control.</li>
+        <li><b>Documented traceability chain</b> for working standards, showing each link from the working standard to the SI realisation.</li>
+      </ul>
     </div>
   </section>
 
@@ -1119,9 +1361,13 @@
         of Clauses 8.2 to 8.9.</p>
       </div>
     </div>
-    <div class="note">
-      <b>Key point:</b> Both options require full compliance with the technical requirements of
-      Clauses 4 to 7.
+    <div class="examples">
+      <h4>Examples in practice</h4>
+      <ul>
+        <li><b>Option A:</b> documented management system addressing Clauses 8.2 to 8.9 directly, with procedures, records and reviews in place.</li>
+        <li><b>Option B:</b> ISO 9001:2015 certificate plus a cross-reference matrix linking ISO 9001 clauses to MS ISO/IEC 17025 requirements.</li>
+        <li><b>Evidence that the chosen option supports consistent fulfilment</b> of the technical requirements of Clauses 4 to 7, including competence, methods, equipment and reporting.</li>
+      </ul>
     </div>
   </section>
 
@@ -1131,12 +1377,12 @@
     <h1 style="font-size:36px;">Key takeaways</h1>
     <div class="rule"></div>
     <ul class="ck" style="max-width:900px;">
-      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 4</b> — Impartiality and confidentiality are ongoing obligations.</li>
-      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 5</b> — The laboratory must be a legal entity with a defined, documented scope and clear responsibilities.</li>
-      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 6</b> — Competent people, suitable facilities, calibrated equipment, unbroken traceability and controlled external providers.</li>
-      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 7</b> — The technical process: valid methods, controlled records, sound uncertainty, valid results and defensible reports.</li>
-      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 8</b> — A living management system: risks, improvement, corrective action, internal audits and management review.</li>
-      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Annexes</b> — Metrological traceability and management system options.</li>
+      <li><b>Clause 4</b> — Impartiality and confidentiality are ongoing obligations.</li>
+      <li><b>Clause 5</b> — The laboratory must be a legal entity with a defined, documented scope and clear responsibilities.</li>
+      <li><b>Clause 6</b> — Competent people, suitable facilities, calibrated equipment, unbroken traceability and controlled external providers.</li>
+      <li><b>Clause 7</b> — The technical process: valid methods, controlled records, sound uncertainty, valid results and defensible reports.</li>
+      <li><b>Clause 8</b> — A living management system: risks, improvement, corrective action, internal audits and management review.</li>
+      <li><b>Annexes</b> — Metrological traceability and management system options.</li>
     </ul>
     <div class="byline">
       Prepared by <b>Muhammad Firdaus Abdullah</b><br>
@@ -1147,6 +1393,7 @@
 </div>
 
 <div class="progress" id="progress"></div>
+<div class="hint">Tap / click anywhere to advance</div>
 
 <nav class="hud">
   <div class="title-mini" id="miniTitle">MS ISO/IEC 17025:2017 <span>— Briefing</span></div>
@@ -1175,6 +1422,7 @@
   const menuGrid = document.getElementById('menuGrid');
   let idx = 0;
 
+  /* Build menu */
   slides.forEach((s, i) => {
     const b = document.createElement('button');
     b.className = 'menu-item';
@@ -1207,11 +1455,27 @@
   function openMenu(){ menu.classList.add('open'); }
   function closeMenu(){ menu.classList.remove('open'); }
 
-  nextBtn.addEventListener('click', next);
-  prevBtn.addEventListener('click', prev);
-  document.getElementById('menuBtn').addEventListener('click', openMenu);
-  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  /* HUD buttons */
+  nextBtn.addEventListener('click', function(e){ e.stopPropagation(); next(); });
+  prevBtn.addEventListener('click', function(e){ e.stopPropagation(); prev(); });
+  document.getElementById('menuBtn').addEventListener('click', function(e){ e.stopPropagation(); openMenu(); });
+  document.getElementById('menuClose').addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
 
+  /* ===== CLICK / TAP ANYWHERE ON A SLIDE TO ADVANCE ===== */
+  slides.forEach(s => {
+    s.addEventListener('click', function(e){
+      // Do not advance if the menu is open
+      if (menu.classList.contains('open')) return;
+      // Do not advance if clicking an interactive element
+      if (e.target.closest('button, a, input, select, textarea, .no-advance')) return;
+      // Do not advance if the user has selected text
+      if (window.getSelection && window.getSelection().toString().length > 0) return;
+      // Advance
+      next();
+    });
+  });
+
+  /* Keyboard navigation */
   document.addEventListener('keydown', function(e){
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
@@ -1221,6 +1485,7 @@
     else if (e.key === 'Escape') { closeMenu(); }
   });
 
+  /* Touch swipe */
   let x0 = null;
   document.addEventListener('touchstart', e => { x0 = e.changedTouches[0].clientX; }, {passive:true});
   document.addEventListener('touchend', e => {
