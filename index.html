@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISO/IEC 17025:2017 Briefing — SINGLAS Laboratory Assessment Checklist</title>
+<style>
+  :root{
+    --navy:#0b2545;
+    --navy2:#13315c;
+    --blue:#1479c9;
+    --blue-l:#e8f2fb;
+    --teal:#0aa39a;
+    --amber:#e0a020;
+    --red:#c0392b;
+    --green:#1e8e5a;
+    --ink:#16202b;
+    --grey:#5b6b7c;
+    --line:#dfe7ef;
+    --bg:#eef2f7;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{position:relative;height:100vh;overflow:hidden;}
+
+  /* ---------- SLIDES ---------- */
+  .slide{
+    position:absolute;inset:0;
+    display:none;
+    padding:42px 58px 118px;
+    overflow-y:auto;
+    background:#fff;
+    animation:fade .28s ease;
+  }
+  .slide.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .slide::-webkit-scrollbar{width:10px;}
+  .slide::-webkit-scrollbar-thumb{background:#c8d4e2;border-radius:10px;}
+
+  .kicker{
+    display:inline-block;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue);
+    background:var(--blue-l);
+    padding:5px 12px;border-radius:20px;margin-bottom:14px;
+  }
+  h1{font-size:44px;line-height:1.12;margin:0 0 14px;letter-spacing:-.02em;}
+  h2{font-size:31px;line-height:1.2;margin:0 0 6px;color:var(--navy);letter-spacing:-.015em;}
+  h3{font-size:17px;margin:22px 0 8px;color:var(--navy2);letter-spacing:.01em;}
+  h3:first-child{margin-top:0;}
+  p{font-size:15px;line-height:1.62;color:#2c3a49;margin:0 0 12px;}
+  .lead{font-size:17px;color:var(--grey);}
+  .rule{height:3px;width:64px;background:var(--blue);border-radius:3px;margin:16px 0 22px;}
+
+  /* ---------- LISTS ---------- */
+  ul.ck{list-style:none;margin:0 0 6px;padding:0;}
+  ul.ck li{
+    position:relative;padding:7px 0 7px 26px;
+    font-size:14.5px;line-height:1.55;border-bottom:1px dashed #eaf0f6;
+  }
+  ul.ck li:last-child{border-bottom:none;}
+  ul.ck li::before{
+    content:"";position:absolute;left:4px;top:15px;
+    width:8px;height:8px;border-radius:2px;background:var(--blue);
+    transform:rotate(45deg);
+  }
+  ul.ck li b{color:var(--navy);}
+  ul.ck.tight li{padding-top:4px;padding-bottom:4px;font-size:14px;}
+
+  /* ---------- GRIDS & CARDS ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{
+    background:#f8fbfe;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:10px;padding:16px 18px;
+  }
+  .card.teal{border-left-color:var(--teal);}
+  .card.amber{border-left-color:var(--amber);}
+  .card.red{border-left-color:var(--red);}
+  .card.green{border-left-color:var(--green);}
+  .card h4{margin:0 0 8px;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);}
+  .card p{font-size:13.5px;margin:0;color:#3a4a5a;line-height:1.55;}
+
+  .pill{
+    display:inline-block;font-size:12.5px;font-weight:600;
+    background:#eef4fa;color:var(--navy2);border:1px solid #d7e4f1;
+    padding:4px 11px;border-radius:16px;margin:3px 5px 3px 0;
+  }
+
+  /* ---------- TABLES ---------- */
+  .tblwrap{overflow-x:auto;margin-top:8px;}
+  table.ct{width:100%;border-collapse:collapse;font-size:14px;}
+  table.ct th{
+    background:var(--navy);color:#fff;text-align:left;
+    padding:11px 13px;font-weight:600;font-size:12.5px;
+    letter-spacing:.05em;text-transform:uppercase;
+  }
+  table.ct td{padding:10px 13px;border-bottom:1px solid #e6edf4;vertical-align:top;line-height:1.5;}
+  table.ct tr:nth-child(even) td{background:#f7fafd;}
+  table.ct td.c{font-weight:700;color:var(--blue);white-space:nowrap;}
+  table.ct td b{color:var(--navy);}
+
+  /* ---------- TITLE / SECTION SLIDES ---------- */
+  .title-slide,.sec-slide{
+    background:linear-gradient(135deg,#0b2545 0%,#13315c 48%,#0f4c75 100%);
+    color:#fff;display:none;
+  }
+  .title-slide.active,.sec-slide.active{display:flex;flex-direction:column;justify-content:center;}
+  .title-slide h1,.sec-slide h1{color:#fff;}
+  .title-slide .kicker,.sec-slide .kicker{background:rgba(255,255,255,.14);color:#8fd0ff;}
+  .title-slide p,.sec-slide p{color:#c3d6e8;}
+  .title-slide .rule,.sec-slide .rule{background:#4fb3ff;}
+  .sec-slide .big-num{
+    font-size:110px;font-weight:800;line-height:1;color:rgba(255,255,255,.14);
+    letter-spacing:-.05em;margin-bottom:-12px;
+  }
+  .byline{
+    margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);
+    font-size:14px;color:#a9c4dd;letter-spacing:.02em;
+  }
+  .byline b{color:#fff;font-weight:600;}
+
+  /* ---------- HUD ---------- */
+  .hud{
+    position:fixed;left:0;right:0;bottom:0;height:66px;z-index:60;
+    display:flex;align-items:center;gap:18px;padding:0 26px;
+    background:rgba(255,255,255,.93);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-top:1px solid #dbe3ec;
+  }
+  .hud .title-mini{font-size:13px;font-weight:600;color:var(--navy);flex:1;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .hud .title-mini span{color:var(--grey);font-weight:400;}
+  .btn{
+    border:1px solid #cdd9e6;background:#fff;color:var(--navy);
+    font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:8px;cursor:pointer;
+    transition:.15s;font-family:inherit;
+  }
+  .btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .btn:disabled{opacity:.35;cursor:not-allowed;}
+  .btn:disabled:hover{background:#fff;color:var(--navy);border-color:#cdd9e6;}
+  .counter{font-size:13.5px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;min-width:62px;text-align:center;}
+  .progress{position:fixed;bottom:66px;left:0;height:3px;background:var(--blue);width:0;
+    z-index:61;transition:width .28s ease;}
+
+  /* ---------- MENU ---------- */
+  .menu{
+    position:fixed;inset:0;z-index:90;background:rgba(9,25,45,.97);
+    padding:48px 56px 80px;overflow-y:auto;display:none;
+  }
+  .menu.open{display:block;}
+  .menu h3{color:#fff;font-size:16px;letter-spacing:.14em;text-transform:uppercase;
+    margin:0 0 22px;color:#7fc4ff;}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;}
+  .menu-item{
+    text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    color:#dbe9f6;font-size:13.5px;padding:11px 14px;border-radius:8px;cursor:pointer;
+    font-family:inherit;line-height:1.35;transition:.15s;
+  }
+  .menu-item:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .menu-item .n{display:block;font-size:11px;color:#7fa8cc;margin-bottom:3px;font-weight:700;letter-spacing:.08em;}
+  .menu-item:hover .n{color:#cfe6fa;}
+  .menu-close{position:absolute;top:30px;right:40px;}
+
+  .note{
+    background:#fff8e6;border:1px solid #f3dfa8;border-left:4px solid var(--amber);
+    border-radius:8px;padding:13px 16px;font-size:13.5px;color:#6b5514;line-height:1.55;margin-top:16px;
+  }
+  .note b{color:#8a6a08;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .slide{padding:28px 24px 118px;}
+    h1{font-size:32px;} h2{font-size:24px;}
+    .grid2,.grid3{grid-template-columns:1fr;}
+    .hud .title-mini{display:none;}
+    .menu{padding:70px 22px 60px;}
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    body{overflow:visible;}
+    .deck{height:auto;}
+    .slide{position:static;display:block !important;page-break-after:always;padding:30px;overflow:visible;animation:none;}
+    .title-slide,.sec-slide{display:flex !important;}
+    .hud,.progress,.menu{display:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · TITLE -->
+  <section class="slide title-slide active" data-title="Title">
+    <span class="kicker">Laboratory Assessment Checklist Briefing</span>
+    <h1>ISO/IEC 17025:2017</h1>
+    <h1 style="font-size:27px;font-weight:400;color:#9fc6e6;margin-bottom:22px;">General Requirements for the Competence of Testing &amp; Calibration Laboratories</h1>
+    <div class="rule"></div>
+    <p style="max-width:760px;font-size:16px;">
+      A clause-by-clause walkthrough aligned to the SINGLAS Laboratory Assessment Checklist
+      (LAFM03) — covering Clauses 4 to 8, the SAC obligations of an accredited laboratory,
+      and the key evidence an assessor will look for.
+    </p>
+    <div class="byline">
+      Prepared by <b>Muhammad Firdaus Abdullah</b><br>
+      Reference: Singlas LAFM03_ISO 17025-2017 Checklist (02 April 2018)
+    </div>
+  </section>
+
+  <!-- 2 · AGENDA -->
+  <section class="slide" data-title="Agenda &amp; How to Use">
+    <span class="kicker">Agenda</span>
+    <h2>What this briefing covers</h2>
+    <div class="rule"></div>
+    <div class="grid3">
+      <div class="card"><h4>Clause 4</h4><p>General Requirements — Impartiality &amp; Confidentiality</p></div>
+      <div class="card teal"><h4>Clause 5</h4><p>Structural Requirements — Legal entity, organisation, range of activities</p></div>
+      <div class="card amber"><h4>Clause 6</h4><p>Resource Requirements — Personnel, facilities, equipment, traceability, external providers</p></div>
+      <div class="card green"><h4>Clause 7</h4><p>Process Requirements — Contracts, methods, sampling, records, reports, complaints, nonconforming work, data control</p></div>
+      <div class="card red"><h4>Clause 8</h4><p>Management System Requirements — Options A &amp; B, documents, records, risks, audits, reviews</p></div>
+      <div class="card"><h4>Annexes</h4><p>Nominee assessment, SAC obligations, follow-up on previous findings</p></div>
+    </div>
+    <div class="note">
+      <b>How to use:</b> Navigate with <b>← →</b> arrow keys, <b>Space</b>, or the on-screen buttons.
+      Press <b>M</b> to open the slide menu. Each slide maps to specific checklist clauses and lists
+      the records/documentation ("To Produce" / "To Consider") expected at assessment.
+    </div>
+  </section>
+
+  <!-- 3 · AT A GLANCE -->
+  <section class="slide" data-title="ISO/IEC 17025:2017 at a Glance">
+    <span class="kicker">Structure</span>
+    <h2>ISO/IEC 17025:2017 at a glance</h2>
+    <div class="rule"></div>
+    <p class="lead">The standard is built on five requirement clauses, supported by annexes.</p>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:120px">Clause</th><th style="width:220px">Title</th><th>Key Sub-clauses</th></tr></thead>
+        <tbody>
+          <tr><td class="c">4</td><td><b>General Requirements</b></td><td>4.1 Impartiality · 4.2 Confidentiality</td></tr>
+          <tr><td class="c">5</td><td><b>Structural Requirements</b></td><td>5.1 – 5.7 Legal entity, management, scope of activities, organisation, responsibility, personnel</td></tr>
+          <tr><td class="c">6</td><td><b>Resource Requirements</b></td><td>6.1 General · 6.2 Personnel · 6.3 Facilities &amp; environmental conditions · 6.4 Equipment · 6.5 Metrological traceability · 6.6 Externally provided products &amp; services</td></tr>
+          <tr><td class="c">7</td><td><b>Process Requirements</b></td><td>7.1 Review of requests · 7.2 Methods · 7.3 Sampling · 7.4 Handling of items · 7.5 Technical records · 7.6 Measurement uncertainty · 7.7 Validity of results · 7.8 Reporting · 7.9 Complaints · 7.10 Nonconforming work · 7.11 Control of data</td></tr>
+          <tr><td class="c">8</td><td><b>Management System Requirements</b></td><td>8.1 Options · 8.2 Documentation · 8.3 Control of documents · 8.4 Control of records · 8.5 Risks &amp; opportunities · 8.6 Improvement · 8.7 Corrective action · 8.8 Internal audits · 8.9 Management reviews</td></tr>
+          <tr><td class="c">Annex A</td><td><b>Metrological Traceability</b></td><td>A.1 – A.3 (incl. requirements for nominee competence)</td></tr>
+          <tr><td class="c">Annex B</td><td><b>Management System Options</b></td><td>Option A (8.2–8.9) · Option B (ISO 9001:2015)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4 · REFERENCES -->
+  <section class="slide" data-title="References &amp; SINGLAS Documents">
+    <span class="kicker">References</span>
+    <h2>Reference documents</h2>
+    <div class="rule"></div>
+    <p>The assessment checklist is read together with the following SAC / SINGLAS documents:</p>
+    <div style="margin-top:10px;">
+      <span class="pill">ISO/IEC 17025:2017</span>
+      <span class="pill">SAC-01</span>
+      <span class="pill">SAC-02</span>
+      <span class="pill">SAC-SINGLAS 001</span>
+      <span class="pill">SAC-SINGLAS 002</span>
+      <span class="pill">SAC-SINGLAS 006</span>
+      <span class="pill">PROF 001</span>
+    </div>
+    <h3>Assessment types covered by the checklist</h3>
+    <div class="grid3">
+      <div class="card"><h4>Initial</h4><p>First-time accreditation assessment.</p></div>
+      <div class="card"><h4>Preliminary</h4><p>Readiness / gap assessment before the full assessment.</p></div>
+      <div class="card"><h4>Renewal</h4><p>Re-assessment at the end of the accreditation cycle.</p></div>
+      <div class="card teal"><h4>Surveillance</h4><p>Periodic monitoring within the accreditation cycle.</p></div>
+      <div class="card teal"><h4>Non-Routine</h4><p>Triggered by complaints, changes or special circumstances.</p></div>
+      <div class="card teal"><h4>Verification</h4><p>Confirmation that corrective actions have been effective.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 · SECTION 4 DIVIDER -->
+  <section class="slide sec-slide" data-title="Clause 4 — General Requirements">
+    <div class="big-num">04</div>
+    <h1>General Requirements</h1>
+    <div class="rule"></div>
+    <p style="font-size:17px;">4.1 Impartiality &nbsp;·&nbsp; 4.2 Confidentiality</p>
+  </section>
+
+  <!-- 6 · 4.1 IMPARTIALITY -->
+  <section class="slide" data-title="4.1 Impartiality">
+    <span class="kicker">Clause 4.1 · Impartiality</span>
+    <h2>Impartiality</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:34%">Evidence / To Consider</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">4.1.1</td>
+            <td>Laboratory activities shall be undertaken <b>impartially</b> — i.e. presence of bias or conflicts of interest is not permitted.</td>
+            <td>Policy statements, top-level commitment</td>
+          </tr>
+          <tr>
+            <td class="c">4.1.2</td>
+            <td>Does the laboratory demonstrate <b>management commitment to impartiality</b>?</td>
+            <td>Management review · Code of conduct · Declaration forms relating to confidentiality / impartiality</td>
+          </tr>
+          <tr>
+            <td class="c">4.1.3</td>
+            <td>Top management has <b>overall responsibility</b> for impartiality of the laboratory's activities.</td>
+            <td>Organisation chart, job descriptions, policy sign-off</td>
+          </tr>
+          <tr>
+            <td class="c">4.1.4</td>
+            <td>Does the laboratory <b>identify risks to its impartiality on an ongoing basis</b>?</td>
+            <td>Risk from <b>activities</b> · Risk from <b>its relationships</b> · Risk from the <b>relationships of its personnel</b><br>To consider: Risk assessment · Risk matrix</td>
+          </tr>
+          <tr>
+            <td class="c">4.1.5</td>
+            <td>Does the laboratory <b>eliminate or minimize</b> the risks identified?</td>
+            <td>Action plans, mitigation records, review of effectiveness</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>Assessor focus:</b> Impartiality risks are a living process — not a one-off declaration.
+      Expect to see evidence of ongoing identification, mitigation and review.
+    </div>
+  </section>
+
+  <!-- 7 · 4.2 CONFIDENTIALITY -->
+  <section class="slide" data-title="4.2 Confidentiality">
+    <span class="kicker">Clause 4.2 · Confidentiality</span>
+    <h2>Confidentiality</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:34%">Evidence / To Consider</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">4.2.1</td>
+            <td>How is the laboratory responsible for the <b>confidentiality of information</b> obtained or created during laboratory activities, and for the <b>proprietary rights</b> of its customers?</td>
+            <td>Code of conduct · Contractual agreement</td>
+          </tr>
+          <tr>
+            <td class="c">4.2.2</td>
+            <td>Does the laboratory <b>notify its customers</b> when it is legally obliged to release confidential information?</td>
+            <td>Notification records, contract clauses</td>
+          </tr>
+          <tr>
+            <td class="c">4.2.3</td>
+            <td>Is information about customers received <b>from sources other than the customer</b> kept confidential? Is the <b>source not revealed</b> to the customer unless agreed by the source?</td>
+            <td>Confidentiality procedure, staff briefings</td>
+          </tr>
+          <tr>
+            <td class="c">4.2.4</td>
+            <td>How does the laboratory ensure that <b>all personnel</b> (including contracted personnel) keep confidential all information obtained or created during laboratory activities?</td>
+            <td>Signed confidentiality agreements, induction records, contracts with subcontracted personnel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>Remember:</b> Confidentiality obligations extend beyond employees — contracted, seconded and
+      temporary personnel are all in scope.
+    </div>
+  </section>
+
+  <!-- 8 · SECTION 5 DIVIDER -->
+  <section class="slide sec-slide" data-title="Clause 5 — Structural Requirements">
+    <div class="big-num">05</div>
+    <h1>Structural Requirements</h1>
+    <div class="rule"></div>
+    <p style="font-size:17px;">5.1 – 5.7 &nbsp;·&nbsp; Legal entity, management, scope, organisation &amp; responsibility</p>
+  </section>
+
+  <!-- 9 · 5.1–5.3 -->
+  <section class="slide" data-title="5.1 – 5.3 Legal Entity, Management &amp; Scope">
+    <span class="kicker">Clause 5.1 – 5.3</span>
+    <h2>Legal entity, management &amp; scope of activities</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:34%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">5.1</td>
+            <td>Is the laboratory, or the organisation of which it is part, a <b>legal entity</b> legally responsible for its laboratory activities?</td>
+            <td>Valid <b>ACRA certificate</b> · Company registration number</td>
+          </tr>
+          <tr>
+            <td class="c">5.2</td>
+            <td>Does the laboratory <b>identify management</b> that has overall responsibility for the laboratory?</td>
+            <td>Job description · Organisation chart</td>
+          </tr>
+          <tr>
+            <td class="c">5.3</td>
+            <td>Does the laboratory <b>define and document the range of laboratory activities</b> which conform to ISO 17025:2017?<br><br>
+              Does it cover work carried out in:
+              <ul class="ck tight" style="margin-top:6px">
+                <li>Permanent facilities?</li>
+                <li>Sites away from its permanent facilities?</li>
+                <li>Associated temporary facilities?</li>
+                <li>Mobile facilities?</li>
+                <li>Customer's facilities?</li>
+              </ul>
+              Do these activities conform to <b>customer and regulatory requirements</b>?
+            </td>
+            <td>Scope of accreditation · Quality manual · Site lists · Regulatory approvals</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10 · 5.4–5.7 -->
+  <section class="slide" data-title="5.4 – 5.7 Organisation &amp; Responsibility">
+    <span class="kicker">Clause 5.4 – 5.7</span>
+    <h2>Organisation, responsibility &amp; personnel</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Consider</th></tr></thead>
+        <tbody>
+          <tr><td class="c">5.4</td><td>Laboratory activities are performed in a way that meets the requirements of ISO 17025, the laboratory's customers, regulatory authorities and the organisations providing recognition.</td><td>Quality manual, procedures, scope statements</td></tr>
+          <tr>
+            <td class="c">5.5</td>
+            <td>Does the laboratory:<br>
+              <b>a)</b> define the organisation and management structure of the laboratory?<br>
+              <b>b)</b> specify the responsibility, authority and interrelationship of all personnel who manage, perform or verify work affecting results?<br>
+              <b>c)</b> document necessary procedures to ensure consistent application of its activities and the validity of its results?
+            </td>
+            <td>Job description · Organisation chart · Roles &amp; responsibilities · Standard Operating Procedures</td>
+          </tr>
+          <tr>
+            <td class="c">5.6</td>
+            <td>Does the laboratory have <b>authorized and sufficient personnel</b> to:<br>
+              <b>a)</b> implement, maintain and improve the management system?<br>
+              <b>b)</b> identify deviations and initiate actions to minimize or prevent such deviations?<br>
+              <b>c)</b> report to management on the performance of the management system and any need for improvements?<br>
+              <b>d)</b> ensure the effectiveness of laboratory activities?
+            </td>
+            <td>Staffing plan, training matrix, KPIs, management reports</td>
+          </tr>
+          <tr>
+            <td class="c">5.7</td>
+            <td>Does the laboratory <b>communicate to staff</b> about the effectiveness and integrity of the management system <b>when changes are made</b> to it?</td>
+            <td>Communication records, meeting minutes, change notices</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 11 · SECTION 6 DIVIDER -->
+  <section class="slide sec-slide" data-title="Clause 6 — Resource Requirements">
+    <div class="big-num">06</div>
+    <h1>Resource Requirements</h1>
+    <div class="rule"></div>
+    <p style="font-size:17px;">6.1 General &nbsp;·&nbsp; 6.2 Personnel &nbsp;·&nbsp; 6.3 Facilities &nbsp;·&nbsp; 6.4 Equipment &nbsp;·&nbsp; 6.5 Traceability &nbsp;·&nbsp; 6.6 External providers</p>
+  </section>
+
+  <!-- 12 · 6.1 + 6.2 PERSONNEL -->
+  <section class="slide" data-title="6.1 General &amp; 6.2 Personnel">
+    <span class="kicker">Clause 6.1 – 6.2 · Personnel</span>
+    <h2>Resources &amp; personnel competence</h2>
+    <div class="rule"></div>
+    <div class="card" style="margin-bottom:16px;">
+      <h4>6.1 General</h4>
+      <p>Does the laboratory have <b>sufficient personnel, facilities, equipment, systems and support services</b>
+      necessary to manage and perform its laboratory activities?</p>
+    </div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Consider</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">6.2.1</td>
+            <td>All personnel acting in the laboratory shall be <b>impartial, competent and work in accordance with the management system</b>.</td>
+            <td>Code of conduct, competency records</td>
+          </tr>
+          <tr>
+            <td class="c">6.2.2</td>
+            <td>Does the laboratory <b>document the competence requirements for each function</b> that may influence the results of laboratory activities?
+              <ul class="ck tight" style="margin-top:6px">
+                <li>Education</li>
+                <li>Qualification</li>
+                <li>Training required</li>
+                <li>Technical knowledge</li>
+                <li>Skills</li>
+                <li>Experience</li>
+              </ul>
+            </td>
+            <td>Training and Competency Matrix · Job description · Training records · Curriculum vitae</td>
+          </tr>
+          <tr>
+            <td class="c">6.2.3</td>
+            <td>Personnel have the <b>competence to perform</b> the laboratory activities for which they are responsible.</td>
+            <td>Competency assessments, authorisation records</td>
+          </tr>
+          <tr>
+            <td class="c">6.2.4</td>
+            <td>Are the <b>duties, responsibilities and authorities</b> of laboratory personnel communicated to them?</td>
+            <td>Job descriptions, signed acknowledgements</td>
+          </tr>
+          <tr>
+            <td class="c">6.2.5</td>
+            <td>Does the laboratory have <b>procedures and retain records</b> for:<br>
+              <b>a)</b> determining the competence requirements?<br>
+              <b>b) to f)</b> selection, training, supervision, authorization, and monitoring of competence of personnel performing laboratory activities?
+            </td>
+            <td>To produce: Procedures covering the above</td>
+          </tr>
+          <tr>
+            <td class="c">6.2.6</td>
+            <td>Personnel are <b>authorized</b> to perform specific laboratory activities (e.g. sampling, testing, calibration, reporting, giving opinions &amp; interpretations, signing).</td>
+            <td>Authorisation list, approved signatory records</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 13 · 6.3 FACILITIES -->
+  <section class="slide" data-title="6.3 Facilities &amp; Environmental Conditions">
+    <span class="kicker">Clause 6.3 · Facilities &amp; Environmental Conditions</span>
+    <h2>Facilities and environmental conditions</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr><td class="c">6.3.1</td><td>Does the laboratory <b>document and ensure control</b> of the facilities and environmental conditions necessary for the performance of laboratory activities?</td><td>To produce: Procedures of the above</td></tr>
+          <tr><td class="c">6.3.2</td><td>Facilities and environmental conditions are <b>suitable</b> for the activities and do not adversely affect the validity of results.</td><td>Facility drawings, specifications</td></tr>
+          <tr><td class="c">6.3.3</td><td>Does the laboratory <b>monitor, control and record</b> the environmental conditions?</td><td>To produce: Records of the above (temperature, humidity, etc.)</td></tr>
+          <tr>
+            <td class="c">6.3.4</td>
+            <td>Does the laboratory <b>monitor and periodically review</b> the measures to control facilities? For example:
+              <ul class="ck tight" style="margin-top:6px">
+                <li>Access to and use of laboratory areas</li>
+                <li>Prevention of contamination, interference or other adverse influences</li>
+                <li>Effective separation between areas with incompatible laboratory activities</li>
+              </ul>
+            </td>
+            <td>Access control records, segregation plans, environmental review reports</td>
+          </tr>
+          <tr><td class="c">6.3.5</td><td>Does the laboratory ensure compliance to Section 6.3 when laboratory activities are performed <b>at sites or facilities outside its permanent control</b>?</td><td>Site assessment records, mobile/field procedures</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 14 · 6.4 EQUIPMENT PART 1 -->
+  <section class="slide" data-title="6.4 Equipment (Part 1)">
+    <span class="kicker">Clause 6.4 · Equipment</span>
+    <h2>Equipment — availability, handling &amp; calibration</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr><td class="c">6.4.1</td><td>Does the laboratory have <b>access to equipment</b> required for the correct performance of laboratory activities, and which can influence results?</td><td>Equipment master list</td></tr>
+          <tr><td class="c">6.4.2</td><td>Does the laboratory ensure compliance to Section 6.4 when <b>using equipment outside its permanent control</b>?</td><td>Field equipment procedures, check records</td></tr>
+          <tr><td class="c">6.4.3</td><td>Does the laboratory have a procedure for <b>handling, transport, storage, use and planned maintenance</b> of equipment?</td><td>To produce: Procedures of the above</td></tr>
+          <tr><td class="c">6.4.4</td><td>Does the laboratory <b>verify that equipment conforms to specified requirements</b> before being placed or returned into service?</td><td>Verification / installation qualification records</td></tr>
+          <tr><td class="c">6.4.5 – 6.4.6</td><td>Does the laboratory ensure that measuring equipment is <b>calibrated</b> and capable of achieving the measurement accuracy or measurement uncertainty required to provide a valid result?</td><td>Calibration certificates, uncertainty budgets</td></tr>
+          <tr><td class="c">6.4.7</td><td>Does the laboratory have an <b>established calibration programme</b> and review the suitability and frequency of calibration?</td><td>To produce: Calibration programme · Records of review of calibration programme<br>To consider: Equipment Master List</td></tr>
+          <tr><td class="c">6.4.8</td><td>Is there a system of <b>labelling, coding or identification</b> of all equipment requiring calibration or which has a defined period of validity?</td><td>Calibration labels, asset tags</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 15 · 6.4 EQUIPMENT PART 2 -->
+  <section class="slide" data-title="6.4 Equipment (Part 2) — Records">
+    <span class="kicker">Clause 6.4 · Equipment (continued)</span>
+    <h2>Equipment — malfunction, checks &amp; records</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">6.4.9</td>
+            <td>Does the laboratory have a process for handling equipment that <b>no longer meets specified requirements</b>? Does the process include <b>examining the effect of the deviation</b> from specified requirements?</td>
+            <td>Out-of-service procedure, impact assessment records</td>
+          </tr>
+          <tr><td class="c">6.4.11</td><td>Does the laboratory perform <b>periodic checks or updates</b> to maintain confidence in the performance of its equipment? <i>(Includes reference values or correction factors.)</i></td><td>Interim check records</td></tr>
+          <tr><td class="c">6.4.12</td><td>Does the laboratory take practicable measures to <b>prevent unintended adjustments</b> of equipment from invalidating results?</td><td>Seals, password protection, tamper labels</td></tr>
+          <tr>
+            <td class="c">6.4.13</td>
+            <td>Does the laboratory retain <b>records for equipment</b> which can influence laboratory activities? For example:
+              <ul class="ck tight" style="margin-top:6px">
+                <li><b>a)</b> Identity of equipment, including software and firmware version</li>
+                <li><b>b)</b> Manufacturer's name, type identification, serial number or other unique identification</li>
+                <li><b>c)</b> Evidence of verification that equipment conforms with specified requirements</li>
+                <li><b>d)</b> Current location</li>
+                <li><b>e)</b> Calibration dates, results, adjustments, acceptance criteria, due date / interval</li>
+                <li><b>f)</b> Documentation of reference materials, results, acceptance criteria, relevant dates, period of validity</li>
+                <li><b>g)</b> Maintenance plan and maintenance carried out to date</li>
+                <li><b>h)</b> Details of any damage, malfunction, modification to, or repair of, the equipment</li>
+              </ul>
+            </td>
+            <td>To produce: Records of the above</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 16 · 6.5 TRACEABILITY -->
+  <section class="slide" data-title="6.5 Metrological Traceability">
+    <span class="kicker">Clause 6.5 · Metrological Traceability</span>
+    <h2>Metrological traceability</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:34%">Evidence / To Consider</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">6.5.1</td>
+            <td>Does the laboratory establish and maintain metrological traceability of its measurement results by means of a <b>documented unbroken chain of calibrations</b>, each contributing to the measurement uncertainty, linking them to an appropriate reference?</td>
+            <td>Traceability charts, calibration certificates, uncertainty statements</td>
+          </tr>
+          <tr>
+            <td class="c">6.5.2</td>
+            <td>Does the laboratory ensure that measurement results are <b>traceable to the International System (SI) of Units</b> where possible?</td>
+            <td>Calibration certificates from NMI / accredited labs</td>
+          </tr>
+          <tr>
+            <td class="c">6.5.3</td>
+            <td>Where SI traceability is not possible, the laboratory demonstrates traceability to an appropriate reference (e.g. certified reference materials, consensus standards, specified methods).</td>
+            <td>To consider:<br>· Calibration provided by a competent laboratory<br>· Certified reference materials by a competent producer<br>· Direct realization of SI units</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>Assessor focus:</b> Traceability is not just a certificate on file — the laboratory must be able to
+      show the <b>chain</b> and how each link contributes to the reported measurement uncertainty.
+    </div>
+  </section>
+
+  <!-- 17 · 6.6 EXTERNAL PROVIDERS -->
+  <section class="slide" data-title="6.6 Externally Provided Products &amp; Services">
+    <span class="kicker">Clause 6.6 · Externally Provided Products &amp; Services</span>
+    <h2>Externally provided products and services</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr><td class="c">6.6.1</td><td>Does the laboratory ensure the <b>suitability of externally provided products and services</b> that affect laboratory activities?</td><td>Approved supplier list, purchase specifications</td></tr>
+          <tr>
+            <td class="c">6.6.2</td>
+            <td>Does the laboratory have <b>procedures and records</b> for the following?<br>
+              <b>a)</b> defining, reviewing and approving the laboratory's requirements for externally provided products and services<br>
+              <b>b)</b> criteria for evaluation, selection, monitoring of performance and re-evaluation of external providers
+            </td>
+            <td>To produce: Procedures &amp; records for the above</td>
+          </tr>
+          <tr><td class="c">6.6.3</td><td>Does the laboratory <b>communicate its requirements</b> to external providers for the products and services to be provided?</td><td>Purchase orders, contracts, specifications</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Typical externally provided items</h3>
+    <div>
+      <span class="pill">Calibration services</span>
+      <span class="pill">Reference materials / CRMs</span>
+      <span class="pill">Proficiency testing schemes</span>
+      <span class="pill">Subcontracted tests</span>
+      <span class="pill">Consumables &amp; reagents</span>
+      <span class="pill">Maintenance &amp; servicing</span>
+      <span class="pill">LIMS / software</span>
+    </div>
+  </section>
+
+  <!-- 18 · SECTION 7 DIVIDER -->
+  <section class="slide sec-slide" data-title="Clause 7 — Process Requirements">
+    <div class="big-num">07</div>
+    <h1>Process Requirements</h1>
+    <div class="rule"></div>
+    <p style="font-size:17px;">7.1 – 7.11 &nbsp;·&nbsp; The technical heart of the standard</p>
+  </section>
+
+  <!-- 19 · 7.1 CONTRACTS -->
+  <section class="slide" data-title="7.1 Review of Requests, Tenders &amp; Contracts">
+    <span class="kicker">Clause 7.1 · Review of Requests, Tenders &amp; Contracts</span>
+    <h2>Review of requests, tenders and contracts</h2>
+    <div class="rule"></div>
+    <ul class="ck">
+      <li><b>7.1.1</b> — Does the laboratory have a procedure for the review of requests, tenders and contracts? The review ensures that:
+        <ul class="ck tight" style="margin-top:6px">
+          <li>Requirements are adequately defined, documented and understood</li>
+          <li>The laboratory has the capability and resources to meet them</li>
+          <li>The appropriate method is selected and capable of meeting the customer's requirements</li>
+        </ul>
+      </li>
+      <li><b>7.1.2</b> — Does the laboratory:
+        <ul class="ck tight" style="margin-top:6px">
+          <li>Notify the customer of any <b>inappropriate or outdated methods</b>, and ensure the contract is acceptable to both parties?</li>
+          <li>Ensure that <b>deviations requested by the customer</b> do not impact the integrity of the laboratory or the validity of the results?</li>
+          <li>Ensure the <b>decision rule</b> is clearly defined, communicated and agreed by both parties when a <b>statement of conformity</b> is required?</li>
+          <li>Notify customers of any <b>deviations from the contract</b> and, if these occur after work has commenced, repeat the contract review and notify all affected personnel?</li>
+        </ul>
+      </li>
+      <li><b>7.1.3</b> — Does the laboratory <b>cooperate with customers</b> or their representatives in clarifying the customer's request and in monitoring the laboratory's performance in relation to the work performed?</li>
+      <li><b>7.1.4</b> — <b>Selection, verification and validation of methods</b> (see 7.2).</li>
+    </ul>
+    <div class="note">
+      <b>To produce:</b> Records of contract review · Records of any changes and pertinent discussions
+      on customer's requirements.
+    </div>
+  </section>
+
+  <!-- 20 · 7.2.1 -->
+  <section class="slide" data-title="7.2.1 Selection &amp; Verification of Methods">
+    <span class="kicker">Clause 7.2.1 · Selection and Verification of Methods</span>
+    <h2>Selection and verification of methods</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr><td class="c">7.2.1.1</td><td>Are all methods, procedures and supporting documentation <b>appropriate to laboratory activities, relevant, up to date, and readily available</b> to personnel?</td><td>Controlled method library, access records</td></tr>
+          <tr><td class="c">7.2.1.2</td><td>Does the laboratory ensure that it uses the <b>most appropriate version</b> of a method?</td><td>Document control, version register</td></tr>
+          <tr><td class="c">7.2.1.3</td><td>Does the laboratory <b>select and inform the customer of the method chosen</b> if the customer does not specify the method?</td><td>Contract records, customer communications</td></tr>
+          <tr><td class="c">7.2.1.4</td><td>Does the laboratory <b>verify that it can properly perform the methods</b> and achieve the required performance before introducing them?</td><td>To produce: Records of verification</td></tr>
+          <tr><td class="c">7.2.1.5</td><td>Has the laboratory verified that it can properly perform the methods and achieve the required performance before introducing them?</td><td>To produce: Records of verification</td></tr>
+          <tr><td class="c">7.2.1.6</td><td>Does the laboratory have a <b>formal plan for method development</b>, performed by competent personnel with adequate resources? Are <b>periodic reviews</b> carried out to ensure that the needs of the customer are fulfilled?</td><td>Method development plan, review records</td></tr>
+          <tr><td class="c">7.2.1.7</td><td>Does the laboratory <b>document, justify, authorize and seek acceptance from the customer</b> for any deviations to methods prior to performing them?</td><td>Deviation records, customer acceptance</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 21 · 7.2.2 -->
+  <section class="slide" data-title="7.2.2 Validation of Methods">
+    <span class="kicker">Clause 7.2.2 · Validation of Methods</span>
+    <h2>Validation of methods</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:36%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">7.2.2.1</td>
+            <td>Does the laboratory <b>validate</b>:
+              <ul class="ck tight" style="margin-top:6px">
+                <li>Non-standard methods?</li>
+                <li>Laboratory-developed methods?</li>
+                <li>Standard methods used <b>outside their intended scope</b>?</li>
+                <li>Any validated methods that have since been <b>modified</b>?</li>
+              </ul>
+            </td>
+            <td>Validation plan and reports</td>
+          </tr>
+          <tr>
+            <td class="c">7.2.2.2</td>
+            <td>Are validation records retained, containing:
+              <ul class="ck tight" style="margin-top:6px">
+                <li>The validation procedure used</li>
+                <li>Specification of the requirements</li>
+                <li>Determination of the performance characteristics of the method</li>
+                <li>Results obtained</li>
+                <li>A statement on the validity of the method, detailing its fitness for the intended use</li>
+              </ul>
+            </td>
+            <td>To produce: Records of validation</td>
+          </tr>
+          <tr>
+            <td class="c">7.2.2.3</td>
+            <td>Are the <b>performance characteristics of validated methods</b> relevant to the customer's needs and consistent with specified requirements?</td>
+            <td>Performance characteristics tables, customer specifications</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 22 · 7.3 SAMPLING + 7.4 ITEMS -->
+  <section class="slide" data-title="7.3 Sampling &amp; 7.4 Handling of Items">
+    <span class="kicker">Clause 7.3 – 7.4</span>
+    <h2>Sampling &amp; handling of test or calibration items</h2>
+    <div class="rule"></div>
+    <h3>7.3 Sampling</h3>
+    <ul class="ck">
+      <li><b>7.3.1</b> — Does the laboratory have a <b>sampling plan and method</b> for performing sampling activities?
+        <ul class="ck tight" style="margin-top:6px">
+          <li>Is the sampling plan and method <b>available at the site</b> where sampling is performed?</li>
+          <li>Does the sampling method address the <b>factors to be controlled</b> to ensure the validity of subsequent testing or calibration results?</li>
+        </ul>
+      </li>
+      <li><b>7.3.2</b> — Does the laboratory <b>record sampling data</b> as part of the laboratory activity?</li>
+      <li><b>7.3.3</b> — Are deviations from the sampling plan/method <b>recorded and reported</b>?</li>
+    </ul>
+    <div class="note" style="margin-top:12px;"><b>To produce:</b> Sampling method describing the plan, the method and the factors to be controlled.</div>
+
+    <h3>7.4 Handling of test or calibration items</h3>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:30%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr><td class="c">7.4.1</td><td>Does the laboratory have a system for <b>unambiguous identification</b> of test or calibration items that ensures no physical confusion or when referred to in records or documents? Is the identification <b>retained</b> whilst under the responsibility of the laboratory?</td><td>Item identification procedure, labels</td></tr>
+          <tr><td class="c">7.4.2</td><td>Does the laboratory take precautions to avoid <b>deterioration, contamination, loss or damage</b> to the item during handling, transport, storage, preparation and retention?</td><td>Handling &amp; storage procedures</td></tr>
+          <tr><td class="c">7.4.3</td><td>Upon receipt of items which have <b>deviated from specified conditions</b>, does the laboratory record these deviations? Are the deviations notified to customers for their instructions and the results of this consultation recorded?</td><td>To produce: Records for the above</td></tr>
+          <tr><td class="c">7.4.4</td><td>For items requiring <b>storage under specific environmental conditions</b>, does the laboratory maintain, monitor and record these conditions?</td><td>Storage condition logs</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 23 · 7.5 + 7.6 -->
+  <section class="slide" data-title="7.5 Technical Records &amp; 7.6 Measurement Uncertainty">
+    <span class="kicker">Clause 7.5 – 7.6</span>
+    <h2>Technical records &amp; evaluation of measurement uncertainty</h2>
+    <div class="rule"></div>
+    <h3>7.5 Technical records</h3>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:34%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">7.5.1</td>
+            <td>Does the laboratory retain and maintain technical records containing <b>sufficient information to enable repetition</b> of the laboratory activity under conditions as close as possible to the original?
+              <ul class="ck tight" style="margin-top:6px">
+                <li>Date and identity of personnel responsible for the laboratory activity and checking of data and results</li>
+                <li>Factors affecting measurement results and its associated measurement uncertainty</li>
+                <li>Evaluation of measurement uncertainty</li>
+              </ul>
+            </td>
+            <td>To produce: Records for the above containing (but not limited to) the listed items</td>
+          </tr>
+          <tr>
+            <td class="c">7.5.2</td>
+            <td>Are <b>amendments to technical reports trackable</b> to previous versions or original observations? Are the <b>original and amended data and files kept</b>?
+              <ul class="ck tight" style="margin-top:6px">
+                <li>Date of alteration</li>
+                <li>Indication of altered aspects</li>
+                <li>Personnel responsible for the alterations</li>
+              </ul>
+            </td>
+            <td>To produce: Records for the above</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>7.6 Evaluation of measurement uncertainty</h3>
+    <ul class="ck">
+      <li><b>7.6.1</b> — Does the laboratory <b>identify the contributions to measurement uncertainty</b> using appropriate methods of analysis, including those arising from sampling?</li>
+      <li><b>7.6.2</b> — For laboratories performing calibrations, including of its own equipment, is the <b>measurement uncertainty for all calibrations evaluated</b>?</li>
+      <li><b>7.6.3</b> — For laboratories performing testing, has the <b>measurement uncertainty been evaluated</b>?<br>
+        <span style="color:var(--grey);font-size:13.5px;"><i>NB: If it is not possible to evaluate the measurement uncertainty, an estimation of the uncertainty must be made.</i></span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 24 · 7.7 -->
+  <section class="slide" data-title="7.7 Ensuring the Validity of Results">
+    <span class="kicker">Clause 7.7 · Ensuring the Validity of Results</span>
+    <h2>Ensuring the validity of results</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:32%">Evidence / To Consider</th></tr></thead>
+        <tbody>
+          <tr><td class="c">7.7.1</td><td>Does the laboratory have a <b>procedure for monitoring the validity of results</b>? Is the monitoring <b>planned and reviewed periodically</b>?</td><td>Quality control plan, control charts, review records</td></tr>
+          <tr><td class="c">7.7.2</td><td>Does the laboratory <b>compare its results with other laboratories</b>, for example through participation in proficiency testing or inter-laboratory comparisons?</td><td>PT/ILC participation plan and results</td></tr>
+          <tr><td class="c">7.7.3</td><td>Does the laboratory <b>analyse the data or results</b> of the monitoring activities and <b>take appropriate actions</b> when these results fall outside pre-defined criteria?</td><td>Analysis records, corrective action triggers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Typical monitoring activities</h3>
+    <div>
+      <span class="pill">Use of reference materials</span>
+      <span class="pill">Proficiency testing</span>
+      <span class="pill">Inter-laboratory comparisons</span>
+      <span class="pill">Replicate tests</span>
+      <span class="pill">Control charts</span>
+      <span class="pill">Retained item re-testing</span>
+      <span class="pill">Blank &amp; spike samples</span>
+    </div>
+  </section>
+
+  <!-- 25 · 7.8.1–7.8.2 -->
+  <section class="slide" data-title="7.8.1 – 7.8.2 Reporting of Results (General)">
+    <span class="kicker">Clause 7.8.1 – 7.8.2 · Reporting of Results</span>
+    <h2>Reporting of results — general &amp; common requirements</h2>
+    <div class="rule"></div>
+    <ul class="ck">
+      <li><b>7.8.1.1</b> — Does the laboratory <b>review and authorize the results prior to release</b>? Are any results not reported to the customer <b>made readily available</b>?</li>
+    </ul>
+    <h3>7.8.2.1 — Does the report contain at least the following information?</h3>
+    <div class="grid2">
+      <ul class="ck tight">
+        <li><b>a)</b> A title (e.g. "Test Report", "Calibration Certificate" or "Report of Sampling")</li>
+        <li><b>b)</b> Name and address of the laboratory</li>
+        <li><b>c)</b> Location of performance of the laboratory activities (including customer facility, sites away, temporary or mobile facilities)</li>
+        <li><b>d)</b> Unique identification that all components are recognized as a portion of a complete report, and a clear identification of the end</li>
+        <li><b>e)</b> Name and contact information of the customer</li>
+        <li><b>f)</b> Identification of the method used</li>
+        <li><b>g)</b> A description, unambiguous identification, and, when necessary, the condition of the item</li>
+        <li><b>h)</b> Date of receipt of the item(s) and the date of sampling, where critical to validity</li>
+      </ul>
+      <ul class="ck tight">
+        <li><b>i)</b> Date(s) of performance of the laboratory activity</li>
+        <li><b>j)</b> Date of issue of the report</li>
+        <li><b>k)</b> Reference to the sampling plan and sampling method used, where relevant</li>
+        <li><b>l)</b> A statement that the results relate only to the items tested, calibrated or sampled</li>
+        <li><b>m)</b> The results with, where appropriate, the units of measurement</li>
+        <li><b>n)</b> Additions to, deviations, or exclusions from the method</li>
+        <li><b>o)</b> Identification of the person(s) authorizing the report</li>
+        <li><b>p)</b> Clear identification when results are from external providers</li>
+      </ul>
+    </div>
+    <div class="note">
+      <b>7.8.2.2</b> — When applicable, does the laboratory clearly identify in its reports which
+      information and/or sample is <b>provided by the customer</b>?
+    </div>
+  </section>
+
+  <!-- 26 · 7.8.3–7.8.5 -->
+  <section class="slide" data-title="7.8.3 – 7.8.5 Test, Calibration &amp; Sampling Reports">
+    <span class="kicker">Clause 7.8.3 – 7.8.5 · Specific Requirements</span>
+    <h2>Test, calibration &amp; sampling reports</h2>
+    <div class="rule"></div>
+
+    <h3>7.8.3 — Specific requirements for test reports</h3>
+    <p style="font-size:14px;">Does the test report contain the following where necessary?</p>
+    <ul class="ck tight">
+      <li><b>a)</b> Information on specific test conditions, such as environmental conditions</li>
+      <li><b>b)</b> Where relevant, a statement of conformity with requirements or specifications</li>
+      <li><b>c)</b> Where applicable, the measurement uncertainty presented in the same unit as the measurand, or in a term relative to the measurand (e.g. percent), when:<br>
+        — it is relevant to the validity or application of the test results;<br>
+        — a customer's instruction so requires; or<br>
+        — the measurement uncertainty affects conformity to a specification limit</li>
+      <li><b>d)</b> Where appropriate, opinions and interpretations</li>
+      <li><b>e)</b> Additional information which may be required by specific methods, authorities, customers or groups of customers</li>
+    </ul>
+
+    <h3>7.8.4 — Specific requirements for calibration reports</h3>
+    <ul class="ck tight">
+      <li><b>a)</b> The measurement uncertainty of the measurement result, presented in the same unit as the measurand or in a term relative to the measurand (e.g. percent)</li>
+      <li>The conditions (e.g. environmental) under which the calibrations were made that have an influence on the measurement results</li>
+      <li>A statement identifying how the measurements are <b>metrologically traceable</b></li>
+      <li>The results <b>before and after</b> any adjustment or repair, if available</li>
+      <li>Where relevant, a statement of conformity with requirements or specifications</li>
+      <li>Where appropriate, opinions and interpretations</li>
+      <li><b>7.8.4.3</b> — Does the calibration laboratory ensure that certificates or labels <b>do not contain any recommendation on the calibration interval</b>? If so, has this been <b>agreed with the customer</b>?</li>
+    </ul>
+
+    <h3>7.8.5 — Specific requirements for sampling reports</h3>
+    <ul class="ck tight">
+      <li>The date of sampling</li>
+      <li>Unique identification of the item or material sampled (including manufacturer name, model/type designation and serial numbers as appropriate)</li>
+      <li>The location of sampling, including any diagrams, sketches or photographs</li>
+      <li>A reference to the sampling plan and sampling method</li>
+      <li>Details of any environmental conditions during sampling that affect the interpretation of results</li>
+      <li>Information required to evaluate measurement uncertainty for subsequent testing or calibration</li>
+    </ul>
+  </section>
+
+  <!-- 27 · 7.8.6–7.8.8 -->
+  <section class="slide" data-title="7.8.6 – 7.8.8 Conformity, Opinions &amp; Amendments">
+    <span class="kicker">Clause 7.8.6 – 7.8.8</span>
+    <h2>Statements of conformity, opinions &amp; amendments</h2>
+    <div class="rule"></div>
+
+    <h3>7.8.6 — Reporting statements of conformity</h3>
+    <ul class="ck tight">
+      <li><b>7.8.6.1</b> — Does the laboratory <b>document the decision rule</b> employed when making statements of conformity in the report?</li>
+      <li><b>7.8.6.2</b> — When reporting on the statement of conformity, does the statement clearly identify:<br>
+        <b>a)</b> to which results the statement of conformity applies?<br>
+        <b>b)</b> which specifications, standards or parts thereof are met or not met?<br>
+        <b>c)</b> the decision rule applied?</li>
+    </ul>
+
+    <h3>7.8.7 — Reporting opinions and interpretations</h3>
+    <ul class="ck tight">
+      <li><b>7.8.7.1</b> — Does the laboratory ensure that opinions and interpretations are made and released by <b>authorized personnel</b>? Does the laboratory <b>document the basis</b> on which the opinions and interpretations are made?</li>
+      <li><b>7.8.7.2</b> — Is it <b>clearly identifiable</b> in the reports when the laboratory makes opinions and interpretations based on the results obtained from the tested or calibrated item?</li>
+      <li><b>7.8.7.3</b> — Does the laboratory keep <b>records of any communications</b> of opinions and interpretations with the customer?</li>
+    </ul>
+
+    <h3>7.8.8 — Amendments to reports</h3>
+    <ul class="ck tight">
+      <li><b>7.8.8.1</b> — When the laboratory makes any changes to a report, is this <b>clearly identified</b> in the report? Where appropriate, are the <b>reasons for the changes</b> clearly identified?</li>
+      <li><b>7.8.8.2</b> — When changes are made to a report after it has been issued, does the laboratory issue it as a <b>further document</b> which includes the statement "Amendment to report, serial number" or other equivalent form of wording?</li>
+      <li><b>7.8.8.3</b> — When issuing a <b>completely new report</b>, does the laboratory issue a <b>unique identification</b> to this report and include a <b>reference to the original report</b>?</li>
+    </ul>
+  </section>
+
+  <!-- 28 · 7.9 COMPLAINTS -->
+  <section class="slide" data-title="7.9 Complaints">
+    <span class="kicker">Clause 7.9 · Complaints</span>
+    <h2>Complaints</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:90px">Clause</th><th>Requirement</th><th style="width:30%">Evidence / To Produce</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="c">7.9.1 / 7.9.3</td>
+            <td>Does the laboratory have a <b>documented process</b> to receive, evaluate and make decisions on complaints?<br><br>
+              Does the process for handling complaints contain at least the following elements?
+              <ul class="ck tight" style="margin-top:6px">
+                <li><b>a)</b> Description of the process for receiving, validating, investigating the complaint, and deciding what actions are to be taken in response to it</li>
+                <li><b>b)</b> Tracking and recording complaints, including actions undertaken to resolve them</li>
+                <li><b>c)</b> Ensuring that any appropriate action is taken</li>
+              </ul>
+            </td>
+            <td>To produce: Handling process for complaints</td>
+          </tr>
+          <tr><td class="c">7.9.2</td><td>Is the handling process for complaints <b>available to any interested party upon request</b>?</td><td>Published procedure, customer-facing documentation</td></tr>
+          <tr><td class="c">7.9.4</td><td>When receiving the complaint, does the laboratory <b>gather and verify all information</b> to validate the complaint, and take action to deal with any complaints that it is responsible for?</td><td>Investigation records</td></tr>
+          <tr><td class="c">7.9.5</td><td>Does the laboratory, where possible, <b>acknowledge receipt</b> of the complaint, and provide the complainant with <b>progress reports and the outcome</b>?</td><td>To produce: Records for Clauses 7.9.5 to 7.9.7</td></tr>
+          <tr><td class="c">7.9.6</td><td>Is the individual(s) who reviews, approves or communicates the outcomes of the complaint investigation to the complainant <b>not involved in the original laboratory activities</b>?</td><td>Independence evidence</td></tr>
+          <tr><td class="c">7.9.7</td><td>Does the laboratory (where possible) give <b>formal notice of the end</b> of the complaint handling to the complainant?</td><td>Closure letters / notifications</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 29 · 7.10 + 7.11 -->
+  <section class="slide" data-title="7.10 Nonconforming Work &amp; 7.11 Control of Data">
+    <span class="kicker">Clause 7.10 – 7.11</span>
+    <h2>Nonconforming work &amp; control of data and information management</h2>
+    <div class="rule"></div>
+
+    <h3>7.10 — Nonconforming work</h3>
+    <ul class="ck tight">
+      <li><b>7.10.1</b> — Does the laboratory have a <b>procedure for dealing with nonconforming work</b>?
+        <ul class="ck tight" style="margin-top:6px">
+          <li><b>a)</b> Does the procedure ensure that the <b>responsibilities and authorities</b> for the management of nonconforming work are defined?</li>
+          <li><b>b)</b> Are actions (including halting work, withholding results) taken based on the <b>significance of the nonconformity</b>?</li>
+          <li><b>c)</b> Is the <b>customer notified</b> and, where necessary, are results <b>recalled</b>?</li>
+          <li><b>d)</b> Is the <b>significance</b> of the nonconforming work evaluated and appropriate action taken?</li>
+          <li><b>e)</b> Are records retained of nonconforming work, actions taken and the results of any corrective action?</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>7.11 — Control of data and information management</h3>
+    <ul class="ck tight">
+      <li><b>7.11.1</b> — Does the laboratory have access to the <b>data and information needed</b> to perform laboratory activities?</li>
+      <li><b>7.11.2</b> — Are information systems <b>validated, protected, maintained</b> and controlled to ensure the integrity of data?</li>
+      <li><b>7.11.3</b> — Does the laboratory ensure that <b>calculations and data transfers are checked</b> in an appropriate and systematic manner? Is the system <b>able to record system failures</b> and the appropriate immediate and corrective actions?</li>
+      <li><b>7.11.4</b> — Does the laboratory ensure that <b>external providers or the operator of the LIMS</b> complies with the requirements of Section 7.11 if it is managed offsite?</li>
+      <li><b>7.11.5</b> — Does the laboratory ensure that <b>instructions, manuals and reference data</b> relevant to the laboratory information management system(s) are made readily available to personnel?</li>
+      <li><b>7.11.6</b> — Does the laboratory ensure that <b>calculations and data transfers are checked</b> in an appropriate and systematic manner?</li>
+    </ul>
+  </section>
+
+  <!-- 30 · SECTION 8 DIVIDER -->
+  <section class="slide sec-slide" data-title="Clause 8 — Management System Requirements">
+    <div class="big-num">08</div>
+    <h1>Management System Requirements</h1>
+    <div class="rule"></div>
+    <p style="font-size:17px;">8.1 – 8.9 &nbsp;·&nbsp; Options A &amp; B</p>
+  </section>
+
+  <!-- 31 · 8.1 OPTIONS -->
+  <section class="slide" data-title="8.1 Options A &amp; B">
+    <span class="kicker">Clause 8.1 · Options</span>
+    <h2>Management system options</h2>
+    <div class="rule"></div>
+    <div class="grid2">
+      <div class="card">
+        <h4>Option A (8.1.2)</h4>
+        <p>The management system of a laboratory shall address the following:</p>
+        <ul class="ck tight" style="margin-top:10px">
+          <li>Management system documentation <b>(8.2)</b></li>
+          <li>Control of management system documents <b>(8.3)</b></li>
+          <li>Control of records <b>(8.4)</b></li>
+          <li>Actions to address risks and opportunities <b>(8.5)</b></li>
+          <li>Improvement <b>(8.6)</b></li>
+          <li>Corrective action <b>(8.7)</b></li>
+          <li>Internal audits <b>(8.8)</b></li>
+          <li>Management reviews <b>(8.9)</b></li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <h4>Option B (8.1.3)</h4>
+        <p>The laboratory has established and maintained a management system in accordance with
+        <b>ISO 9001:2015</b>, and that is capable of supporting and demonstrating the consistent
+        fulfilment of the requirements of <b>Sections 4 to 7</b>.</p>
+        <p style="margin-top:10px;">This also fulfils at least the <b>intent</b> of the management requirements
+        specified in 8.2 to 8.9.</p>
+      </div>
+    </div>
+    <div class="note">
+      <b>Assessor focus:</b> Whichever option is chosen, the laboratory must still demonstrate the
+      <b>technical competence</b> requirements of Clauses 4 to 7 in full.
+    </div>
+  </section>
+
+  <!-- 32 · 8.2 -->
+  <section class="slide" data-title="8.2 Management System Documentation">
+    <span class="kicker">Clause 8.2 · Management System Documentation</span>
+    <h2>Management system documentation</h2>
+    <div class="rule"></div>
+    <ul class="ck">
+      <li><b>8.2.1</b> — Does the laboratory <b>establish, document and maintain policies and objectives</b> for the fulfilment of ISO 17025:2017 and ensure that these policies are <b>acknowledged and implemented at all levels</b> of the laboratory organisation?</li>
+      <li><b>8.2.2</b> — Do the policies and objectives address the <b>competence, impartiality and consistent operation</b> of the laboratory?</li>
+      <li><b>8.2.3</b> — How does the laboratory provide evidence that <b>management is committed</b> to the development and implementation of the management system and continually improving its effectiveness?
+        <div class="note" style="margin-top:10px;">
+          <b>To consider — ISO 9001:2015 clause 5.1:</b><br>
+          · Communicating to the organisation the importance of meeting customer as well as statutory and regulatory requirements<br>
+          · Establishing the quality policy<br>
+          · Ensuring that quality objectives are established<br>
+          · Conducting management reviews<br>
+          · Ensuring the availability of resources
+        </div>
+      </li>
+      <li><b>8.2.4</b> — Are all documentation, processes, systems, records, etc. <b>included, referenced or linked</b> to the management system? <span style="color:var(--grey);font-size:13px;">(To consider: ISO 9001:2015 clause 4.2.1)</span></li>
+      <li><b>8.2.5</b> — Do <b>all personnel involved in laboratory activities have access</b> to the parts of the management system documentation and related information that are applicable to their responsibilities? <span style="color:var(--grey);font-size:13px;">(To consider: Document control, access rights to inspectors and contracted inspectors)</span></li>
+    </ul>
+  </section>
+
+  <!-- 33 · 8.3 + 8.4 -->
+  <section class="slide" data-title="8.3 Control of Documents &amp; 8.4 Control of Records">
+    <span class="kicker">Clause 8.3 – 8.4</span>
+    <h2>Control of management system documents &amp; records</h2>
+    <div class="rule"></div>
+
+    <h3>8.3 — Control of management system documents</h3>
+    <p style="font-size:14px;">Does the laboratory have <b>procedures to control the documents</b> (internal and external)? Does the laboratory ensure that:</p>
+    <div class="grid2">
+      <ul class="ck tight">
+        <li><b>a)</b> Documents are <b>approved for adequacy prior to issue</b> by authorized personnel</li>
+        <li><b>b)</b> Documents are <b>periodically reviewed</b>, and updated as necessary</li>
+        <li><b>c)</b> <b>Changes</b> and the <b>current revision status</b> of documents are identified</li>
+      </ul>
+      <ul class="ck tight">
+        <li><b>d)</b> Relevant versions of applicable documents are <b>available at points of use</b> and, where necessary, their distribution is controlled</li>
+        <li><b>e)</b> Documents are <b>uniquely identified</b></li>
+        <li><b>f)</b> The <b>unintended use of obsolete documents</b> is prevented</li>
+      </ul>
+    </div>
+
+    <h3>8.4 — Control of records</h3>
+    <ul class="ck tight">
+      <li><b>8.4.1</b> — Does the laboratory <b>establish and retain legible records</b> to demonstrate fulfilment of Section 8.4?</li>
+      <li><b>8.4.2</b> — Does the laboratory implement the controls needed for the <b>identification, storage, protection, back-up, archive, retrieval, retention time and disposal</b> of its records? Is <b>access to these records readily available</b> and consistent with the confidentiality arrangements?</li>
+    </ul>
+    <div class="note">
+      <b>To consider:</b> As a guide, important records should be kept at least through <b>one accreditation cycle</b>.
+      (Ref: ISO 9001:2015 Clause 4.2.4)
+    </div>
+  </section>
+
+  <!-- 34 · 8.5 + 8.6 -->
+  <section class="slide" data-title="8.5 Risks &amp; Opportunities &amp; 8.6 Improvement">
+    <span class="kicker">Clause 8.5 – 8.6</span>
+    <h2>Actions to address risks and opportunities &amp; improvement</h2>
+    <div class="rule"></div>
+
+    <h3>8.5 — Actions to address risks and opportunities</h3>
+    <ul class="ck tight">
+      <li><b>8.5.1 / 8.5.2</b> — Does the laboratory consider the <b>risks and opportunities</b> associated with laboratory activities?
+        <ul class="ck tight" style="margin-top:6px">
+          <li><b>a)</b> Does the laboratory plan actions to address these risks and opportunities?</li>
+          <li><b>b)</b> How to: integrate and implement the actions into its management system; and evaluate the effectiveness of these actions?</li>
+        </ul>
+      </li>
+      <li><b>8.5.3</b> — Are the actions taken to address risks and opportunities <b>proportional to the potential impact</b> on the validity of laboratory results?</li>
+    </ul>
+    <div class="note"><b>To produce:</b> Records of identification of risks and opportunities and associated action plans.</div>
+
+    <h3>8.6 — Improvement</h3>
+    <ul class="ck tight">
+      <li><b>8.6.1</b> — Does the laboratory <b>identify and select opportunities for improvement</b> and implement any necessary actions?</li>
+      <li><b>8.6.2</b> — Does the laboratory <b>seek feedback</b>, both positive and negative, from its customers? Does the laboratory <b>analyse the feedback</b> for purposes of improving the management system, laboratory activities and customer service?</li>
+    </ul>
+  </section>
+
+  <!-- 35 · 8.7 -->
+  <section class="slide" data-title="8.7 Corrective Action">
+    <span class="kicker">Clause 8.7 · Corrective Action</span>
+    <h2>Corrective action</h2>
+    <div class="rule"></div>
+    <p style="font-size:14.5px;"><b>8.7.1</b> — In the event of a nonconformity, does the laboratory:</p>
+    <ul class="ck">
+      <li><b>a)</b> <b>React</b> to the nonconformity and, as applicable:
+        <ul class="ck tight" style="margin-top:6px">
+          <li>Take action to control and correct it</li>
+          <li>Address the consequences</li>
+        </ul>
+      </li>
+      <li><b>b)</b> <b>Evaluate the need for action</b> to eliminate the cause(s) of the nonconformity, to prevent recurrence or occurrence elsewhere, by:
+        <ul class="ck tight" style="margin-top:6px">
+          <li>Reviewing and analysing the nonconformity</li>
+          <li>Determining the causes of the nonconformity</li>
+          <li>Determining if similar nonconformities exist, or could potentially occur</li>
+        </ul>
+      </li>
+      <li><b>c)</b> <b>Implement</b> any action needed</li>
+      <li><b>d)</b> <b>Review the effectiveness</b> of any corrective action taken</li>
+      <li><b>e)</b> <b>Update risks and opportunities</b> determined during planning, if necessary</li>
+      <li><b>f)</b> <b>Make changes to the management system</b>, if necessary</li>
+    </ul>
+    <ul class="ck" style="margin-top:10px;">
+      <li><b>8.7.2 / 8.7.3</b> — Are the corrective actions <b>appropriate to the effects</b> of the nonconformities encountered?</li>
+    </ul>
+    <div class="note">
+      <b>To produce:</b> Records of nonconformities, cause(s) and any subsequent actions taken ·
+      Records of the results of any corrective action.
+    </div>
+  </section>
+
+  <!-- 36 · 8.8 -->
+  <section class="slide" data-title="8.8 Internal Audits">
+    <span class="kicker">Clause 8.8 · Internal Audits</span>
+    <h2>Internal audits</h2>
+    <div class="rule"></div>
+    <ul class="ck">
+      <li><b>8.8.1</b> — Does the laboratory <b>conduct internal audits</b> to determine if the management system:
+        <ul class="ck tight" style="margin-top:6px">
+          <li><b>a)</b> conforms to the laboratory's own requirements for its management system, including the laboratory activities?</li>
+          <li><b>b)</b> conforms to the requirements of <b>ISO 17025</b>?</li>
+          <li>is <b>effectively implemented and maintained</b>?</li>
+        </ul>
+      </li>
+      <li><b>8.8.2</b> — Does the laboratory:
+        <ul class="ck tight" style="margin-top:6px">
+          <li><b>a)</b> plan, establish, implement and maintain an <b>audit programme</b> including the frequency, methods, responsibilities, planning requirements and reporting — taking into consideration the importance of the laboratory activities concerned, changes affecting the laboratory, and the results of previous audits?</li>
+          <li><b>b)</b> define the <b>audit criteria and scope</b> for each audit?</li>
+          <li><b>c)</b> ensure that the <b>results of the audits are reported to relevant management</b>?</li>
+          <li><b>d)</b> implement appropriate <b>correction and corrective actions without undue delay</b>?</li>
+          <li><b>e)</b> retain <b>records as evidence</b> of the implementation of the audit programme and the audit results?</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="note"><b>To produce:</b> Records of internal audits.</div>
+  </section>
+
+  <!-- 37 · 8.9 -->
+  <section class="slide" data-title="8.9 Management Reviews">
+    <span class="kicker">Clause 8.9 · Management Reviews</span>
+    <h2>Management reviews</h2>
+    <div class="rule"></div>
+    <ul class="ck">
+      <li><b>8.9.1</b> — Does the laboratory management <b>review its management system</b> to ensure its continuing suitability, adequacy and effectiveness, including the stated policies and objectives related to the fulfilment of ISO 17025?</li>
+      <li><b>8.9.2</b> — Does the laboratory <b>record the following inputs</b> to management review?
+        <div class="grid2" style="margin-top:10px;">
+          <ul class="ck tight">
+            <li><b>a)</b> Changes in internal and external issues that are relevant to the laboratory</li>
+            <li><b>b)</b> Fulfilment of objectives</li>
+            <li><b>c)</b> Suitability of policies and procedures</li>
+            <li><b>d)</b> Status of actions from previous management reviews</li>
+          </ul>
+          <ul class="ck tight">
+            <li><b>e)</b> Outcome of recent internal audits</li>
+            <li><b>f)</b> Corrective actions</li>
+            <li><b>g)</b> Assessments by external bodies</li>
+            <li><b>h)</b> Results of proficiency testing / inter-laboratory comparisons</li>
+            <li><b>i)</b> Customer and personnel feedback</li>
+            <li><b>j)</b> Complaints</li>
+            <li><b>k)</b> Effectiveness of improvements implemented</li>
+            <li><b>l)</b> Adequacy of resources</li>
+            <li><b>m)</b> Results of risk identification</li>
+            <li><b>n)</b> Outcomes of the assurance of the validity of results</li>
+            <li><b>o)</b> Other relevant factors such as monitoring activities and training</li>
+          </ul>
+        </div>
+      </li>
+      <li><b>8.9.3</b> — Are the <b>outputs</b> of management review recorded, including decisions and actions related to improvement, resource needs and changes to the management system?</li>
+    </ul>
+  </section>
+
+  <!-- 38 · ANNEX: NOMINEE -->
+  <section class="slide" data-title="Annex — Nominee / Key Personnel Assessment">
+    <span class="kicker">Annex A.3 · Nominee Assessment</span>
+    <h2>Assessment of the nominee(s)</h2>
+    <div class="rule"></div>
+    <p>The technical assessor will evaluate the nominee(s) against the following questions:</p>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:60px">No.</th><th>Assessment Question</th></tr></thead>
+        <tbody>
+          <tr><td class="c">1</td><td>Does the nominee possess the required <b>technical qualification, experience and knowledge</b> of the test/calibration methods?</td></tr>
+          <tr><td class="c">2</td><td>Does the nominee demonstrate <b>competency in making critical evaluation</b> of test/calibration results? <i>(See requirements in A.3)</i></td></tr>
+          <tr><td class="c">3</td><td>Does/Do the nominee(s) spend <b>sufficient time in the laboratory</b> in order to exercise adequate supervision?</td></tr>
+          <tr><td class="c">4</td><td>Is/are the nominee(s) <b>familiar with the quality system</b> as documented in the quality manual and SINGLAS requirements?</td></tr>
+          <tr><td class="c">5</td><td><b>Comments from technical assessor</b> on the nominee(s) technical qualification, experience, knowledge of test/calibration methods, competency in making critical evaluation of test/calibration results.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>Key point:</b> Nominees must be able to demonstrate both <b>technical competence</b> and
+      <b>familiarity with the management system</b> — not just administrative presence.
+    </div>
+  </section>
+
+  <!-- 39 · ANNEX: OBLIGATIONS -->
+  <section class="slide" data-title="Annex — Obligations of the Accredited Laboratory">
+    <span class="kicker">SAC 01, Clause 3.1 · Obligations</span>
+    <h2>Obligations of the accredited laboratory</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:80px">Ref</th><th>Obligation</th></tr></thead>
+        <tbody>
+          <tr><td class="c">3.1(a)</td><td>Offer to all customers a <b>standard of service consistent with the SAC terms and conditions</b> and maintain <b>impartiality and integrity</b> in all operations.</td></tr>
+          <tr>
+            <td class="c">3.1(b)</td>
+            <td><b>Immediately notify SAC-SINGLAS</b> on:
+              <ul class="ck tight" style="margin-top:6px">
+                <li><b>(i)</b> Any change in its legal, commercial or organisational status</li>
+                <li><b>(ii)</b> Any changes in organisation, top management and key personnel (e.g. key managerial staff, management representative and approved signatories) who could affect the performance or competence of the laboratory</li>
+                <li><b>(iii)</b> Plans to conduct any accredited activities outside the Republic of Singapore</li>
+                <li><b>(iv)</b> Change of resources and premises</li>
+                <li><b>(v)</b> Any lawsuit or criminal investigation of the laboratory or its staff</li>
+                <li><b>(vi)</b> Any changes to the scope of accreditation</li>
+                <li><b>(vii)</b> Any significant changes in main policies</li>
+                <li><b>(viii)</b> Any other matters that may affect the ability of the laboratory to fulfil requirements for accreditation</li>
+              </ul>
+            </td>
+          </tr>
+          <tr><td class="c">3.1(c)</td><td>Adhere to the <b>rules for the use of the SAC Accreditation Marks</b> and reference to accreditation status as stipulated in <b>SAC 02</b>. Is the laboratory using the <b>Combined ILAC</b> mark correctly?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 40 · ANNEX: OBLIGATIONS CONT. -->
+  <section class="slide" data-title="Annex — Obligations (continued)">
+    <span class="kicker">SAC 01, Clause 3.1 · Obligations (continued)</span>
+    <h2>Obligations of the accredited laboratory</h2>
+    <div class="rule"></div>
+    <div class="tblwrap">
+      <table class="ct">
+        <thead><tr><th style="width:80px">Ref</th><th>Obligation</th></tr></thead>
+        <tbody>
+          <tr><td class="c">3.1(e)</td><td><b>Not to use the accreditation status</b> in such a manner as to bring SAC into disrepute, and not make any statement related to the accreditation which SAC may consider <b>misleading or unauthorized</b>.</td></tr>
+          <tr><td class="c">3.1(f)</td><td>Provide <b>reasonable facilities</b>, such as accommodation, cooperation, and access to documentation, test/calibration standards, personnel and calibration/testing areas for assessors and SAC staff to discharge their duties throughout assessments and resolution of complaints. Make <b>prompt payment</b> to SAC of all necessary fees levied by SAC.</td></tr>
+          <tr><td class="c">3.1(g)</td><td>Upon the <b>withdrawal of accreditation</b>, forthwith discontinue its use of reference to accreditation and withdraw all advertising materials which contain any reference to accreditation.</td></tr>
+          <tr><td class="c">—</td><td>Make a <b>clear and unequivocal statement</b> in all contacts with its customers that a certificate of accreditation in no way implies that the product or service is approved by SAC.</td></tr>
+          <tr><td class="c">—</td><td><b>Not represent or hold itself out as being the agent or partner of SAC</b>, or make any representations on behalf of SAC.</td></tr>
+          <tr><td class="c">—</td><td>Ensure the <b>standard of service and integrity of reports are maintained during relocation</b>. Accredited reports can continue to be issued prior to SAC verification of continual compliance at the new location.<br><br>
+            <i>(NB: Should subsequent findings from SAC during the reassessment show the accreditation requirements are compromised, this may warrant a recall of reports issued.)</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 41 · FOLLOW UP + NOTES -->
+  <section class="slide" data-title="Follow-up on Last Year's Findings &amp; Additional Notes">
+    <span class="kicker">Sections D &amp; F</span>
+    <h2>Follow-up &amp; additional notes</h2>
+    <div class="rule"></div>
+    <div class="grid2">
+      <div class="card amber">
+        <h4>D · Follow up on last year's findings</h4>
+        <p>Review the status of all findings raised at the previous assessment:</p>
+        <ul class="ck tight" style="margin-top:10px">
+          <li>Were root causes identified?</li>
+          <li>Were corrective actions implemented and effective?</li>
+          <li>Is there objective evidence of closure?</li>
+          <li>Have similar issues recurred elsewhere?</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <h4>F · Additional notes</h4>
+        <p>Space for assessor observations, general comments, observations of good practice,
+        areas for improvement and any other matters not captured under a specific clause.</p>
+        <ul class="ck tight" style="margin-top:10px">
+          <li>Observations (not nonconformities)</li>
+          <li>Opportunities for improvement</li>
+          <li>Commendations</li>
+          <li>Notes for the next assessment</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <b>Remember:</b> Findings should be raised against a <b>specific clause</b> of ISO/IEC 17025:2017
+      or the relevant SAC/SINGLAS document, and supported by <b>objective evidence</b>.
+    </div>
+  </section>
+
+  <!-- 42 · SUMMARY -->
+  <section class="slide title-slide" data-title="Summary &amp; Close">
+    <span class="kicker">Summary</span>
+    <h1 style="font-size:36px;">Key takeaways</h1>
+    <div class="rule"></div>
+    <ul class="ck" style="max-width:900px;">
+      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 4</b> — Impartiality and confidentiality are ongoing obligations, not one-time declarations.</li>
+      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 5</b> — The laboratory must be a legal entity with a defined, documented scope and clear responsibilities.</li>
+      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 6</b> — Competent people, suitable facilities, calibrated equipment, unbroken traceability and controlled external providers.</li>
+      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 7</b> — The technical process: valid methods, controlled records, sound uncertainty, valid results and defensible reports.</li>
+      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Clause 8</b> — A living management system: risks, improvement, corrective action, internal audits and management review.</li>
+      <li style="color:#dbe9f6;border-bottom-color:rgba(255,255,255,.12);"><b style="color:#fff;">Annexes</b> — Nominee competence and the SAC obligations of an accredited laboratory.</li>
+    </ul>
+    <div class="byline">
+      Prepared by <b>Muhammad Firdaus Abdullah</b><br>
+      Reference: Singlas LAFM03_ISO 17025-2017 Checklist (02 April 2018)
+    </div>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+
+<nav class="hud">
+  <div class="title-mini" id="miniTitle">ISO/IEC 17025:2017 <span>— Briefing</span></div>
+  <button class="btn" id="menuBtn">☰ Menu</button>
+  <button class="btn" id="prevBtn">← Prev</button>
+  <div class="counter" id="counter">1 / 42</div>
+  <button class="btn" id="nextBtn">Next →</button>
+</nav>
+
+<div class="menu" id="menu">
+  <button class="btn menu-close" id="menuClose">✕ Close</button>
+  <h3>Slide Menu</h3>
+  <div class="menu-grid" id="menuGrid"></div>
+</div>
+
+<script>
+(function(){
+  const slides   = Array.from(document.querySelectorAll('.slide'));
+  const total    = slides.length;
+  const progress = document.getElementById('progress');
+  const counter  = document.getElementById('counter');
+  const prevBtn  = document.getElementById('prevBtn');
+  const nextBtn  = document.getElementById('nextBtn');
+  const miniTitle= document.getElementById('miniTitle');
+  const menu     = document.getElementById('menu');
+  const menuGrid = document.getElementById('menuGrid');
+  let idx = 0;
+
+  /* Build menu */
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'menu-item';
+    b.innerHTML = '<span class="n">SLIDE ' + (i+1) + '</span>' + (s.dataset.title || 'Slide ' + (i+1));
+    b.addEventListener('click', () => { go(i); closeMenu(); });
+    menuGrid.appendChild(b);
+  });
+
+  function go(n){
+    if (n < 0 || n >= total) return;
+    slides[idx].classList.remove('active');
+    idx = n;
+    slides[idx].classList.add('active');
+    slides[idx].scrollTop = 0;
+    update();
+  }
+
+  function update(){
+    counter.textContent = (idx + 1) + ' / ' + total;
+    progress.style.width = ((idx) / (total - 1) * 100) + '%';
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+    const t = slides[idx].dataset.title || ('Slide ' + (idx+1));
+    miniTitle.innerHTML = 'ISO/IEC 17025:2017 <span>— ' + t + '</span>';
+  }
+
+  function next(){ go(Math.min(idx + 1, total - 1)); }
+  function prev(){ go(Math.max(idx - 1, 0)); }
+
+  function openMenu(){ menu.classList.add('open'); }
+  function closeMenu(){ menu.classList.remove('open'); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.getElementById('menuBtn').addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(total - 1); }
+    else if (e.key === 'm' || e.key === 'M') { menu.classList.contains('open') ? closeMenu() : openMenu(); }
+    else if (e.key === 'Escape') { closeMenu(); }
+  });
+
+  /* Touch swipe */
+  let x0 = null;
+  document.addEventListener('touchstart', e => { x0 = e.changedTouches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 70) { dx < 0 ? next() : prev(); }
+    x0 = null;
+  }, {passive:true});
+
+  update();
+})();
+</script>
+</body>
+</html>
