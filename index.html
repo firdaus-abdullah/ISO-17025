@@ -7,15 +7,10 @@
 <style>
   :root{
     --navy:#0b2545;
-    --navy2:#13315c;
     --blue:#1479c9;
     --blue-l:#e8f2fb;
-    --teal:#0aa39a;
-    --amber:#e0a020;
-    --red:#c0392b;
-    --green:#1e8e5a;
-    --ink:#16202b;
-    --grey:#5b6b7c;
+    --ink:#000000;
+    --grey:#333333;
     --line:#dfe7ef;
   }
   *{box-sizing:border-box;}
@@ -23,7 +18,7 @@
   body{
     font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
     background:#ffffff;
-    color:var(--ink);
+    color:#000000;
     overflow:hidden;
     -webkit-font-smoothing:antialiased;
   }
@@ -33,95 +28,99 @@
   .slide{
     position:absolute;inset:0;
     display:none;
-    padding:36px 54px 118px;
+    padding:38px 60px 128px;
     overflow-y:auto;
     background:#ffffff;
     animation:fade .25s ease;
     cursor:pointer;
+    color:#000000;
   }
   .slide.active{display:block;}
   @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
-  .slide::-webkit-scrollbar{width:10px;}
+  .slide::-webkit-scrollbar{width:12px;}
   .slide::-webkit-scrollbar-thumb{background:#c8d4e2;border-radius:10px;}
 
   .kicker{
     display:inline-block;
-    font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--blue);
+    font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:#000000;
     background:var(--blue-l);
-    padding:5px 12px;border-radius:20px;margin-bottom:12px;
+    padding:6px 14px;border-radius:20px;margin-bottom:14px;
+    border:1px solid #cfe3f7;
   }
-  h1{font-size:42px;line-height:1.12;margin:0 0 12px;letter-spacing:-.02em;color:var(--navy);}
-  h2{font-size:28px;line-height:1.2;margin:0 0 4px;color:var(--navy);letter-spacing:-.015em;}
-  h3{font-size:16px;margin:18px 0 6px;color:var(--navy2);}
-  p{font-size:14.5px;line-height:1.6;color:#2c3a49;margin:0 0 10px;}
-  .rule{height:3px;width:60px;background:var(--blue);border-radius:3px;margin:14px 0 18px;}
+  h1{font-size:54px;line-height:1.1;margin:0 0 14px;letter-spacing:-.02em;color:#000000;font-weight:800;}
+  h2{font-size:38px;line-height:1.15;margin:0 0 6px;color:#000000;letter-spacing:-.015em;font-weight:800;}
+  h3{font-size:20px;margin:20px 0 8px;color:#000000;font-weight:700;}
+  p{font-size:18px;line-height:1.6;color:#000000;margin:0 0 12px;}
+  .rule{height:4px;width:72px;background:var(--blue);border-radius:4px;margin:16px 0 22px;}
 
   /* ---------- CLAUSE CARD ---------- */
   .clause-card{
-    border:1px solid #e2eaf3;
-    border-radius:10px;
-    margin-bottom:14px;
+    border:1px solid #d8e2ee;
+    border-radius:12px;
+    margin-bottom:16px;
     overflow:hidden;
     background:#fff;
+    box-shadow:0 1px 3px rgba(11,37,69,.04);
   }
   .clause-head{
     display:flex;
     align-items:flex-start;
-    gap:12px;
-    padding:11px 15px;
+    gap:16px;
+    padding:16px 20px;
     background:#f8fbfe;
     border-bottom:1px solid #e6edf4;
   }
   .clause-num{
     display:inline-block;
-    background:var(--navy);
-    color:#fff;
-    font-size:12px;
-    font-weight:700;
-    padding:4px 10px;
-    border-radius:6px;
+    background:#000000;
+    color:#ffffff;
+    font-size:15px;
+    font-weight:800;
+    padding:6px 14px;
+    border-radius:8px;
     white-space:nowrap;
     flex-shrink:0;
     letter-spacing:.03em;
-    margin-top:1px;
+    margin-top:2px;
   }
   .clause-text{
-    font-size:13.8px;
-    line-height:1.55;
-    color:#2c3a49;
-    padding-top:2px;
+    font-size:18px;
+    line-height:1.6;
+    color:#000000;
+    padding-top:4px;
+    font-weight:500;
   }
-  .clause-text b{color:var(--navy);}
+  .clause-text b{color:#000000;font-weight:800;}
   .clause-examples{
-    padding:9px 15px 11px 15px;
+    padding:12px 20px 14px 20px;
     background:#f0f7ff;
     border-top:1px solid #dceafa;
   }
   .ex-label{
-    font-size:10.5px;
+    font-size:13px;
     text-transform:uppercase;
-    letter-spacing:.1em;
-    font-weight:700;
-    color:var(--blue);
-    margin-bottom:5px;
+    letter-spacing:.12em;
+    font-weight:800;
+    color:#000000;
+    margin-bottom:7px;
   }
   .clause-examples ul{
     margin:0;padding:0;list-style:none;
   }
   .clause-examples li{
     position:relative;
-    padding:3px 0 3px 17px;
-    font-size:12.8px;
-    line-height:1.5;
-    color:#2c3a49;
+    padding:5px 0 5px 22px;
+    font-size:16px;
+    line-height:1.55;
+    color:#000000;
   }
   .clause-examples li::before{
     content:"▸";
-    position:absolute;left:1px;top:3px;
-    color:var(--blue);font-weight:700;
+    position:absolute;left:2px;top:5px;
+    color:#1479c9;font-weight:800;font-size:16px;
   }
-  .clause-examples li b{color:var(--navy);}
+  .clause-examples li b{color:#000000;font-weight:800;}
 
   /* ---------- SECTION DIVIDER ---------- */
   .sec-slide{
@@ -132,12 +131,12 @@
   }
   .sec-slide.active{display:flex;}
   .sec-slide .big-num{
-    font-size:120px;font-weight:800;line-height:1;
+    font-size:150px;font-weight:900;line-height:1;
     color:#e8f2fb;
-    letter-spacing:-.05em;margin-bottom:-16px;
+    letter-spacing:-.05em;margin-bottom:-18px;
   }
-  .sec-slide h1{color:var(--navy);}
-  .sec-slide p{color:var(--grey);font-size:16px;}
+  .sec-slide h1{color:#000000;font-size:56px;}
+  .sec-slide p{color:#000000;font-size:20px;}
 
   /* ---------- TITLE SLIDE ---------- */
   .title-slide{
@@ -149,95 +148,141 @@
   .title-slide.active{display:flex;}
   .title-slide::before{
     content:"";
-    position:absolute;top:0;left:0;right:0;height:6px;
+    position:absolute;top:0;left:0;right:0;height:8px;
     background:linear-gradient(90deg,#1479c9,#0aa39a,#e0a020);
   }
+  .title-slide h1{font-size:60px;}
   .byline{
-    margin-top:26px;padding-top:16px;border-top:1px solid #dfe7ef;
-    font-size:13.5px;color:var(--grey);
+    margin-top:30px;padding-top:18px;border-top:2px solid #dfe7ef;
+    font-size:17px;color:#000000;
   }
-  .byline b{color:var(--navy);font-weight:600;}
+  .byline b{color:#000000;font-weight:800;}
+
+  /* ---------- QR ATTENDANCE SLIDE ---------- */
+  .qr-slide{
+    background:#ffffff;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  }
+  .qr-slide.active{display:flex;}
+  .qr-slide h1{font-size:46px;margin-bottom:10px;}
+  .qr-slide p{font-size:19px;max-width:820px;margin:0 auto 18px;}
+  .qr-box{
+    display:inline-block;
+    padding:24px;
+    background:#ffffff;
+    border:4px solid #1479c9;
+    border-radius:20px;
+    box-shadow:0 8px 28px rgba(20,121,201,.18);
+    margin:10px auto 18px;
+  }
+  .qr-box img{
+    display:block;
+    width:340px;height:340px;
+  }
+  .qr-instructions{
+    font-size:17px;
+    color:#000000;
+    background:#f0f7ff;
+    border:1px solid #cfe3f7;
+    border-radius:10px;
+    padding:14px 24px;
+    max-width:760px;
+    line-height:1.6;
+  }
 
   /* ---------- TABLES ---------- */
-  .tblwrap{overflow-x:auto;margin-top:6px;}
-  table.ct{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .tblwrap{overflow-x:auto;margin-top:8px;}
+  table.ct{width:100%;border-collapse:collapse;font-size:16px;}
   table.ct th{
-    background:var(--navy);color:#fff;text-align:left;
-    padding:10px 12px;font-weight:600;font-size:12px;
+    background:#000000;color:#ffffff;text-align:left;
+    padding:12px 14px;font-weight:700;font-size:14px;
     letter-spacing:.05em;text-transform:uppercase;
   }
-  table.ct td{padding:9px 12px;border-bottom:1px solid #e6edf4;vertical-align:top;line-height:1.5;}
+  table.ct td{padding:11px 14px;border-bottom:1px solid #e6edf4;vertical-align:top;line-height:1.55;color:#000000;}
   table.ct tr:nth-child(even) td{background:#f7fafd;}
-  table.ct td.c{font-weight:700;color:var(--blue);white-space:nowrap;}
-  table.ct td b{color:var(--navy);}
+  table.ct td.c{font-weight:800;color:#000000;white-space:nowrap;}
+  table.ct td b{color:#000000;font-weight:800;}
 
   /* ---------- HUD ---------- */
   .hud{
-    position:fixed;left:0;right:0;bottom:0;height:62px;z-index:60;
-    display:flex;align-items:center;gap:16px;padding:0 24px;
-    background:rgba(255,255,255,.95);
+    position:fixed;left:0;right:0;bottom:0;height:70px;z-index:60;
+    display:flex;align-items:center;gap:14px;padding:0 24px;
+    background:rgba(255,255,255,.97);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
-    border-top:1px solid #dbe3ec;
+    border-top:2px solid #dbe3ec;
   }
-  .hud .title-mini{font-size:12.5px;font-weight:600;color:var(--navy);flex:1;
+  .hud .title-mini{font-size:15px;font-weight:700;color:#000000;flex:1;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .hud .title-mini span{color:var(--grey);font-weight:400;}
+  .hud .title-mini span{color:#333;font-weight:500;}
   .btn{
-    border:1px solid #cdd9e6;background:#fff;color:var(--navy);
-    font-size:13px;font-weight:600;padding:8px 15px;border-radius:8px;cursor:pointer;
+    border:2px solid #cdd9e6;background:#fff;color:#000000;
+    font-size:15px;font-weight:700;padding:10px 18px;border-radius:9px;cursor:pointer;
     transition:.15s;font-family:inherit;
   }
-  .btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .btn:hover{background:#000000;color:#fff;border-color:#000000;}
   .btn:disabled{opacity:.35;cursor:not-allowed;}
-  .btn:disabled:hover{background:#fff;color:var(--navy);border-color:#cdd9e6;}
-  .counter{font-size:13px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
-  .progress{position:fixed;bottom:62px;left:0;height:3px;background:var(--blue);width:0;
+  .btn:disabled:hover{background:#fff;color:#000000;border-color:#cdd9e6;}
+  .counter{font-size:16px;font-weight:800;color:#000000;font-variant-numeric:tabular-nums;min-width:80px;text-align:center;}
+  .progress{position:fixed;bottom:70px;left:0;height:4px;background:#1479c9;width:0;
     z-index:61;transition:width .25s ease;}
 
   /* ---------- MENU ---------- */
   .menu{
-    position:fixed;inset:0;z-index:90;background:rgba(9,25,45,.97);
-    padding:44px 52px 76px;overflow-y:auto;display:none;
+    position:fixed;inset:0;z-index:90;background:rgba(9,25,45,.98);
+    padding:50px 56px 80px;overflow-y:auto;display:none;
   }
   .menu.open{display:block;}
-  .menu h3{color:#fff;font-size:15px;letter-spacing:.14em;text-transform:uppercase;
-    margin:0 0 20px;color:#7fc4ff;}
-  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:9px;}
+  .menu h3{color:#fff;font-size:18px;letter-spacing:.14em;text-transform:uppercase;
+    margin:0 0 22px;color:#7fc4ff;}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px;}
   .menu-item{
     text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-    color:#dbe9f6;font-size:13px;padding:10px 13px;border-radius:8px;cursor:pointer;
+    color:#dbe9f6;font-size:15px;padding:12px 15px;border-radius:9px;cursor:pointer;
     font-family:inherit;line-height:1.35;transition:.15s;
   }
-  .menu-item:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
-  .menu-item .n{display:block;font-size:10.5px;color:#7fa8cc;margin-bottom:2px;font-weight:700;letter-spacing:.08em;}
+  .menu-item:hover{background:#1479c9;border-color:#1479c9;color:#fff;}
+  .menu-item .n{display:block;font-size:12px;color:#7fa8cc;margin-bottom:3px;font-weight:700;letter-spacing:.08em;}
   .menu-item:hover .n{color:#cfe6fa;}
-  .menu-close{position:absolute;top:26px;right:36px;}
+  .menu-close{position:absolute;top:28px;right:38px;}
 
   .hint{
-    position:fixed;bottom:76px;right:24px;z-index:59;
-    font-size:11.5px;color:#9aa9b8;background:rgba(255,255,255,.92);
-    padding:5px 12px;border-radius:16px;border:1px solid #e3eaf2;
+    position:fixed;bottom:84px;right:24px;z-index:59;
+    font-size:13px;color:#333;background:rgba(255,255,255,.95);
+    padding:6px 14px;border-radius:18px;border:1px solid #e3eaf2;
     pointer-events:none;
     animation:pulse 2.4s ease-in-out infinite;
+    font-weight:600;
   }
   @keyframes pulse{0%,100%{opacity:.55;}50%{opacity:1;}}
 
-  @media (max-width:900px){
-    .slide{padding:24px 20px 112px;}
-    h1{font-size:30px;} h2{font-size:22px;}
+  @media (max-width:1000px){
+    .slide{padding:24px 22px 120px;}
+    h1{font-size:34px;} h2{font-size:26px;}
+    .title-slide h1{font-size:38px;}
+    .sec-slide h1{font-size:38px;}
+    .sec-slide .big-num{font-size:90px;}
+    .qr-slide h1{font-size:30px;}
+    .qr-box img{width:240px;height:240px;}
     .hud .title-mini{display:none;}
     .menu{padding:64px 20px 56px;}
     .hint{display:none;}
-    .sec-slide .big-num{font-size:80px;}
-    .clause-head{flex-direction:column;gap:6px;}
+    .clause-head{flex-direction:column;gap:8px;}
+    .clause-text{font-size:16px;}
+    .clause-examples li{font-size:14.5px;}
+    .btn{font-size:13.5px;padding:8px 12px;}
+    .counter{font-size:14px;min-width:64px;}
   }
 
   @media print{
     body{overflow:visible;}
     .deck{height:auto;}
     .slide{position:static;display:block !important;page-break-after:always;padding:26px;overflow:visible;animation:none;}
-    .sec-slide,.title-slide{display:flex !important;}
+    .sec-slide,.title-slide,.qr-slide{display:flex !important;}
     .hud,.progress,.menu,.hint{display:none !important;}
   }
 </style>
@@ -250,9 +295,9 @@
   <section class="slide title-slide active" data-title="Title">
     <span class="kicker">MS ISO/IEC 17025:2017 Briefing</span>
     <h1>MS ISO/IEC 17025:2017</h1>
-    <h1 style="font-size:25px;font-weight:400;color:#5b6b7c;margin-bottom:20px;">General Requirements for the Competence of Testing &amp; Calibration Laboratories</h1>
+    <h1 style="font-size:30px;font-weight:500;color:#000;margin-bottom:24px;">General Requirements for the Competence of Testing &amp; Calibration Laboratories</h1>
     <div class="rule"></div>
-    <p style="max-width:760px;font-size:15.5px;">
+    <p style="max-width:800px;font-size:19px;">
       A clause-by-clause presentation of the actual requirements of MS ISO/IEC 17025:2017,
       covering Clauses 4 to 8 and the Annexes — with detailed examples below every clause.
     </p>
@@ -262,7 +307,25 @@
     </div>
   </section>
 
-  <!-- 2 · STRUCTURE -->
+  <!-- 2 · QR ATTENDANCE -->
+  <section class="slide qr-slide" data-title="Attendance — Scan QR Code">
+    <span class="kicker">Attendance</span>
+    <h1>Scan to Mark Your Attendance</h1>
+    <div class="rule" style="margin-left:auto;margin-right:auto;"></div>
+    <p>Please scan the QR code below using your mobile device to record your attendance for this briefing session.</p>
+    <div class="qr-box">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https%3A%2F%2Fforms.gle%2Fyour-attendance-form"
+        alt="QR Code for Attendance"
+        width="340" height="340">
+    </div>
+    <div class="qr-instructions">
+      <b>How to mark attendance:</b> Open your phone camera or QR scanner app, point it at the QR code,
+      and tap the link that appears. Complete the attendance form with your name, organisation and email.
+    </div>
+  </section>
+
+  <!-- 3 · STRUCTURE -->
   <section class="slide" data-title="Structure of the Standard">
     <span class="kicker">Structure</span>
     <h2>MS ISO/IEC 17025:2017 at a glance</h2>
@@ -270,7 +333,7 @@
     <p>The standard is organised into five main requirement clauses, supported by annexes.</p>
     <div class="tblwrap">
       <table class="ct">
-        <thead><tr><th style="width:110px">Clause</th><th style="width:210px">Title</th><th>Key Sub-clauses</th></tr></thead>
+        <thead><tr><th style="width:120px">Clause</th><th style="width:230px">Title</th><th>Key Sub-clauses</th></tr></thead>
         <tbody>
           <tr><td class="c">4</td><td><b>General Requirements</b></td><td>4.1 Impartiality · 4.2 Confidentiality</td></tr>
           <tr><td class="c">5</td><td><b>Structural Requirements</b></td><td>5.1 – 5.7 Legal entity, management, scope of activities, organisation, responsibility, personnel</td></tr>
@@ -284,7 +347,7 @@
     </div>
   </section>
 
-  <!-- 3 · SECTION 4 DIVIDER -->
+  <!-- 4 · SECTION 4 DIVIDER -->
   <section class="slide sec-slide" data-title="Clause 4 — General Requirements">
     <div class="big-num">04</div>
     <h1>General Requirements</h1>
@@ -292,7 +355,7 @@
     <p>4.1 Impartiality &nbsp;·&nbsp; 4.2 Confidentiality</p>
   </section>
 
-  <!-- 4 · 4.1.1 – 4.1.3 -->
+  <!-- 5 · 4.1.1 – 4.1.3 -->
   <section class="slide" data-title="4.1.1 – 4.1.3 Impartiality">
     <span class="kicker">Clause 4.1 · Impartiality</span>
     <h2>Impartiality</h2>
@@ -344,7 +407,7 @@
     </div>
   </section>
 
-  <!-- 5 · 4.1.4 – 4.1.5 -->
+  <!-- 6 · 4.1.4 – 4.1.5 -->
   <section class="slide" data-title="4.1.4 – 4.1.5 Impartiality Risks">
     <span class="kicker">Clause 4.1 · Impartiality (continued)</span>
     <h2>Impartiality risks &amp; mitigation</h2>
@@ -381,7 +444,7 @@
     </div>
   </section>
 
-  <!-- 6 · 4.2.1 – 4.2.4 -->
+  <!-- 7 · 4.2.1 – 4.2.4 -->
   <section class="slide" data-title="4.2.1 – 4.2.4 Confidentiality">
     <span class="kicker">Clause 4.2 · Confidentiality</span>
     <h2>Confidentiality</h2>
@@ -448,7 +511,7 @@
     </div>
   </section>
 
-  <!-- 7 · SECTION 5 DIVIDER -->
+  <!-- 8 · SECTION 5 DIVIDER -->
   <section class="slide sec-slide" data-title="Clause 5 — Structural Requirements">
     <div class="big-num">05</div>
     <h1>Structural Requirements</h1>
@@ -456,7 +519,7 @@
     <p>5.1 – 5.7 &nbsp;·&nbsp; Legal entity, management, scope, organisation &amp; responsibility</p>
   </section>
 
-  <!-- 8 · 5.1 – 5.3 -->
+  <!-- 9 · 5.1 – 5.3 -->
   <section class="slide" data-title="5.1 – 5.3 Legal Entity, Management &amp; Scope">
     <span class="kicker">Clause 5.1 – 5.3</span>
     <h2>Legal entity, management &amp; scope</h2>
@@ -508,7 +571,7 @@
     </div>
   </section>
 
-  <!-- 9 · 5.4 – 5.5 -->
+  <!-- 10 · 5.4 – 5.5 -->
   <section class="slide" data-title="5.4 – 5.5 Organisation &amp; Responsibility">
     <span class="kicker">Clause 5.4 – 5.5</span>
     <h2>Organisation &amp; responsibility</h2>
@@ -545,7 +608,7 @@
     </div>
   </section>
 
-  <!-- 10 · 5.6 – 5.7 -->
+  <!-- 11 · 5.6 – 5.7 -->
   <section class="slide" data-title="5.6 – 5.7 Personnel &amp; Communication">
     <span class="kicker">Clause 5.6 – 5.7</span>
     <h2>Personnel &amp; communication</h2>
@@ -583,7 +646,7 @@
     </div>
   </section>
 
-  <!-- 11 · SECTION 6 DIVIDER -->
+  <!-- 12 · SECTION 6 DIVIDER -->
   <section class="slide sec-slide" data-title="Clause 6 — Resource Requirements">
     <div class="big-num">06</div>
     <h1>Resource Requirements</h1>
@@ -591,7 +654,7 @@
     <p>6.1 General &nbsp;·&nbsp; 6.2 Personnel &nbsp;·&nbsp; 6.3 Facilities &nbsp;·&nbsp; 6.4 Equipment &nbsp;·&nbsp; 6.5 Traceability &nbsp;·&nbsp; 6.6 External providers</p>
   </section>
 
-  <!-- 12 · 6.1 + 6.2.1 – 6.2.2 -->
+  <!-- 13 · 6.1 + 6.2.1 – 6.2.2 -->
   <section class="slide" data-title="6.1 General &amp; 6.2.1 – 6.2.2 Personnel">
     <span class="kicker">Clause 6.1 – 6.2 · Personnel</span>
     <h2>Resources &amp; competence requirements</h2>
@@ -643,7 +706,7 @@
     </div>
   </section>
 
-  <!-- 13 · 6.2.3 – 6.2.6 -->
+  <!-- 14 · 6.2.3 – 6.2.6 -->
   <section class="slide" data-title="6.2.3 – 6.2.6 Personnel Competence">
     <span class="kicker">Clause 6.2 · Personnel (continued)</span>
     <h2>Competence, communication &amp; authorisation</h2>
@@ -710,7 +773,7 @@
     </div>
   </section>
 
-  <!-- 14 · 6.3.1 – 6.3.3 -->
+  <!-- 15 · 6.3.1 – 6.3.3 -->
   <section class="slide" data-title="6.3.1 – 6.3.3 Facilities &amp; Environmental Conditions">
     <span class="kicker">Clause 6.3 · Facilities</span>
     <h2>Facilities &amp; environmental conditions</h2>
@@ -762,7 +825,7 @@
     </div>
   </section>
 
-  <!-- 15 · 6.3.4 – 6.3.5 -->
+  <!-- 16 · 6.3.4 – 6.3.5 -->
   <section class="slide" data-title="6.3.4 – 6.3.5 Facilities Control &amp; Off-site">
     <span class="kicker">Clause 6.3 · Facilities (continued)</span>
     <h2>Facility control &amp; off-site activities</h2>
@@ -799,7 +862,7 @@
     </div>
   </section>
 
-  <!-- 16 · 6.4.1 – 6.4.4 -->
+  <!-- 17 · 6.4.1 – 6.4.4 -->
   <section class="slide" data-title="6.4.1 – 6.4.4 Equipment Availability &amp; Verification">
     <span class="kicker">Clause 6.4 · Equipment</span>
     <h2>Equipment — availability, handling &amp; verification</h2>
@@ -866,7 +929,7 @@
     </div>
   </section>
 
-  <!-- 17 · 6.4.5 – 6.4.8 -->
+  <!-- 18 · 6.4.5 – 6.4.8 -->
   <section class="slide" data-title="6.4.5 – 6.4.8 Calibration &amp; Labelling">
     <span class="kicker">Clause 6.4 · Equipment (continued)</span>
     <h2>Calibration &amp; identification</h2>
@@ -918,7 +981,7 @@
     </div>
   </section>
 
-  <!-- 18 · 6.4.9 – 6.4.12 -->
+  <!-- 19 · 6.4.9 – 6.4.12 -->
   <section class="slide" data-title="6.4.9 – 6.4.12 Equipment Malfunction &amp; Checks">
     <span class="kicker">Clause 6.4 · Equipment (continued)</span>
     <h2>Malfunction, checks &amp; adjustments</h2>
@@ -970,7 +1033,7 @@
     </div>
   </section>
 
-  <!-- 19 · 6.4.13 -->
+  <!-- 20 · 6.4.13 -->
   <section class="slide" data-title="6.4.13 Equipment Records">
     <span class="kicker">Clause 6.4.13 · Equipment Records</span>
     <h2>Equipment records</h2>
@@ -997,7 +1060,7 @@
     </div>
   </section>
 
-  <!-- 20 · 6.5.1 – 6.5.3 -->
+  <!-- 21 · 6.5.1 – 6.5.3 -->
   <section class="slide" data-title="6.5.1 – 6.5.3 Metrological Traceability">
     <span class="kicker">Clause 6.5 · Metrological Traceability</span>
     <h2>Metrological traceability</h2>
@@ -1049,7 +1112,7 @@
     </div>
   </section>
 
-  <!-- 21 · 6.6.1 – 6.6.3 -->
+  <!-- 22 · 6.6.1 – 6.6.3 -->
   <section class="slide" data-title="6.6.1 – 6.6.3 Externally Provided Products &amp; Services">
     <span class="kicker">Clause 6.6 · Externally Provided Products &amp; Services</span>
     <h2>Externally provided products and services</h2>
@@ -1101,7 +1164,7 @@
     </div>
   </section>
 
-  <!-- 22 · SECTION 7 DIVIDER -->
+  <!-- 23 · SECTION 7 DIVIDER -->
   <section class="slide sec-slide" data-title="Clause 7 — Process Requirements">
     <div class="big-num">07</div>
     <h1>Process Requirements</h1>
@@ -1109,7 +1172,7 @@
     <p>7.1 – 7.11 &nbsp;·&nbsp; The technical heart of the standard</p>
   </section>
 
-  <!-- 23 · 7.1.1 – 7.1.2 -->
+  <!-- 24 · 7.1.1 – 7.1.2 -->
   <section class="slide" data-title="7.1.1 – 7.1.2 Contract Review">
     <span class="kicker">Clause 7.1 · Review of Requests, Tenders &amp; Contracts</span>
     <h2>Contract review &amp; customer notification</h2>
@@ -1146,7 +1209,7 @@
     </div>
   </section>
 
-  <!-- 24 · 7.1.3 – 7.1.4 -->
+  <!-- 25 · 7.1.3 – 7.1.4 -->
   <section class="slide" data-title="7.1.3 – 7.1.4 Cooperation &amp; Method Selection">
     <span class="kicker">Clause 7.1 · Contract Review (continued)</span>
     <h2>Cooperation &amp; method selection</h2>
@@ -1183,7 +1246,7 @@
     </div>
   </section>
 
-  <!-- 25 · 7.2.1.1 – 7.2.1.3 -->
+  <!-- 26 · 7.2.1.1 – 7.2.1.3 -->
   <section class="slide" data-title="7.2.1.1 – 7.2.1.3 Method Selection">
     <span class="kicker">Clause 7.2.1 · Selection &amp; Verification of Methods</span>
     <h2>Method availability &amp; selection</h2>
@@ -1235,7 +1298,7 @@
     </div>
   </section>
 
-  <!-- 26 · 7.2.1.4 – 7.2.1.7 -->
+  <!-- 27 · 7.2.1.4 – 7.2.1.7 -->
   <section class="slide" data-title="7.2.1.4 – 7.2.1.7 Method Verification &amp; Development">
     <span class="kicker">Clause 7.2.1 · Methods (continued)</span>
     <h2>Verification, development &amp; deviations</h2>
@@ -1302,7 +1365,7 @@
     </div>
   </section>
 
-  <!-- 27 · 7.2.2.1 – 7.2.2.3 -->
+  <!-- 28 · 7.2.2.1 – 7.2.2.3 -->
   <section class="slide" data-title="7.2.2.1 – 7.2.2.3 Validation of Methods">
     <span class="kicker">Clause 7.2.2 · Validation of Methods</span>
     <h2>Validation of methods</h2>
@@ -1354,7 +1417,7 @@
     </div>
   </section>
 
-  <!-- 28 · 7.3.1 – 7.3.3 -->
+  <!-- 29 · 7.3.1 – 7.3.3 -->
   <section class="slide" data-title="7.3.1 – 7.3.3 Sampling">
     <span class="kicker">Clause 7.3 · Sampling</span>
     <h2>Sampling</h2>
@@ -1406,7 +1469,7 @@
     </div>
   </section>
 
-  <!-- 29 · 7.4.1 – 7.4.4 -->
+  <!-- 30 · 7.4.1 – 7.4.4 -->
   <section class="slide" data-title="7.4.1 – 7.4.4 Handling of Items">
     <span class="kicker">Clause 7.4 · Handling of Test or Calibration Items</span>
     <h2>Handling of test or calibration items</h2>
@@ -1473,7 +1536,7 @@
     </div>
   </section>
 
-  <!-- 30 · 7.5.1 – 7.5.2 -->
+  <!-- 31 · 7.5.1 – 7.5.2 -->
   <section class="slide" data-title="7.5.1 – 7.5.2 Technical Records">
     <span class="kicker">Clause 7.5 · Technical Records</span>
     <h2>Technical records</h2>
@@ -1510,7 +1573,7 @@
     </div>
   </section>
 
-  <!-- 31 · 7.6.1 – 7.6.3 -->
+  <!-- 32 · 7.6.1 – 7.6.3 -->
   <section class="slide" data-title="7.6.1 – 7.6.3 Measurement Uncertainty">
     <span class="kicker">Clause 7.6 · Evaluation of Measurement Uncertainty</span>
     <h2>Measurement uncertainty</h2>
@@ -1562,7 +1625,7 @@
     </div>
   </section>
 
-  <!-- 32 · 7.7.1 – 7.7.3 -->
+  <!-- 33 · 7.7.1 – 7.7.3 -->
   <section class="slide" data-title="7.7.1 – 7.7.3 Ensuring Validity of Results">
     <span class="kicker">Clause 7.7 · Ensuring the Validity of Results</span>
     <h2>Ensuring the validity of results</h2>
@@ -1614,7 +1677,7 @@
     </div>
   </section>
 
-  <!-- 33 · 7.8.1.1 – 7.8.2.2 -->
+  <!-- 34 · 7.8.1.1 – 7.8.2.2 -->
   <section class="slide" data-title="7.8.1.1 – 7.8.2.2 Reporting — General">
     <span class="kicker">Clause 7.8.1 – 7.8.2 · Reporting of Results</span>
     <h2>Reporting — review, authorisation &amp; common content</h2>
@@ -1666,7 +1729,7 @@
     </div>
   </section>
 
-  <!-- 34 · 7.8.3 Test Reports -->
+  <!-- 35 · 7.8.3 Test Reports -->
   <section class="slide" data-title="7.8.3 Test Reports">
     <span class="kicker">Clause 7.8.3 · Specific Requirements for Test Reports</span>
     <h2>Test reports</h2>
@@ -1688,7 +1751,7 @@
     </div>
   </section>
 
-  <!-- 35 · 7.8.4 Calibration Reports -->
+  <!-- 36 · 7.8.4 Calibration Reports -->
   <section class="slide" data-title="7.8.4 Calibration Reports">
     <span class="kicker">Clause 7.8.4 · Specific Requirements for Calibration Reports</span>
     <h2>Calibration reports</h2>
@@ -1725,7 +1788,7 @@
     </div>
   </section>
 
-  <!-- 36 · 7.8.5 Sampling Reports -->
+  <!-- 37 · 7.8.5 Sampling Reports -->
   <section class="slide" data-title="7.8.5 Sampling Reports">
     <span class="kicker">Clause 7.8.5 · Specific Requirements for Sampling Reports</span>
     <h2>Sampling reports</h2>
@@ -1747,7 +1810,7 @@
     </div>
   </section>
 
-  <!-- 37 · 7.8.6 – 7.8.7 -->
+  <!-- 38 · 7.8.6 – 7.8.7 -->
   <section class="slide" data-title="7.8.6 – 7.8.7 Conformity &amp; Opinions">
     <span class="kicker">Clause 7.8.6 – 7.8.7</span>
     <h2>Statements of conformity &amp; opinions</h2>
@@ -1799,7 +1862,7 @@
     </div>
   </section>
 
-  <!-- 38 · 7.8.8 Amendments to Reports -->
+  <!-- 39 · 7.8.8 Amendments to Reports -->
   <section class="slide" data-title="7.8.8 Amendments to Reports">
     <span class="kicker">Clause 7.8.8 · Amendments to Reports</span>
     <h2>Amendments to reports</h2>
@@ -1851,7 +1914,7 @@
     </div>
   </section>
 
-  <!-- 39 · 7.9.1 – 7.9.4 Complaints -->
+  <!-- 40 · 7.9.1 – 7.9.4 Complaints -->
   <section class="slide" data-title="7.9.1 – 7.9.4 Complaints">
     <span class="kicker">Clause 7.9 · Complaints</span>
     <h2>Complaints — process &amp; investigation</h2>
@@ -1903,7 +1966,7 @@
     </div>
   </section>
 
-  <!-- 40 · 7.9.5 – 7.9.7 Complaints Closure -->
+  <!-- 41 · 7.9.5 – 7.9.7 Complaints Closure -->
   <section class="slide" data-title="7.9.5 – 7.9.7 Complaint Outcomes">
     <span class="kicker">Clause 7.9 · Complaints (continued)</span>
     <h2>Complaint outcomes &amp; closure</h2>
@@ -1955,7 +2018,7 @@
     </div>
   </section>
 
-  <!-- 41 · 7.10.1 Nonconforming Work -->
+  <!-- 42 · 7.10.1 Nonconforming Work -->
   <section class="slide" data-title="7.10.1 Nonconforming Work">
     <span class="kicker">Clause 7.10 · Nonconforming Work</span>
     <h2>Nonconforming work</h2>
@@ -1978,7 +2041,7 @@
     </div>
   </section>
 
-  <!-- 42 · 7.11.1 – 7.11.3 Control of Data -->
+  <!-- 43 · 7.11.1 – 7.11.3 Control of Data -->
   <section class="slide" data-title="7.11.1 – 7.11.3 Control of Data">
     <span class="kicker">Clause 7.11 · Control of Data &amp; Information Management</span>
     <h2>Control of data — access, validation &amp; checks</h2>
@@ -2030,7 +2093,7 @@
     </div>
   </section>
 
-  <!-- 43 · 7.11.4 – 7.11.6 Control of Data (cont.) -->
+  <!-- 44 · 7.11.4 – 7.11.6 Control of Data (cont.) -->
   <section class="slide" data-title="7.11.4 – 7.11.6 Control of Data (continued)">
     <span class="kicker">Clause 7.11 · Control of Data (continued)</span>
     <h2>Offsite systems, manuals &amp; checks</h2>
@@ -2082,7 +2145,7 @@
     </div>
   </section>
 
-  <!-- 44 · SECTION 8 DIVIDER -->
+  <!-- 45 · SECTION 8 DIVIDER -->
   <section class="slide sec-slide" data-title="Clause 8 — Management System Requirements">
     <div class="big-num">08</div>
     <h1>Management System Requirements</h1>
@@ -2090,7 +2153,7 @@
     <p>8.1 – 8.9 &nbsp;·&nbsp; Options A &amp; B</p>
   </section>
 
-  <!-- 45 · 8.1.2 – 8.1.3 Options -->
+  <!-- 46 · 8.1.2 – 8.1.3 Options -->
   <section class="slide" data-title="8.1.2 – 8.1.3 Management System Options">
     <span class="kicker">Clause 8.1 · Options</span>
     <h2>Management system options</h2>
@@ -2127,7 +2190,7 @@
     </div>
   </section>
 
-  <!-- 46 · 8.2.1 – 8.2.3 -->
+  <!-- 47 · 8.2.1 – 8.2.3 -->
   <section class="slide" data-title="8.2.1 – 8.2.3 Management System Documentation">
     <span class="kicker">Clause 8.2 · Management System Documentation</span>
     <h2>Policies, objectives &amp; management commitment</h2>
@@ -2179,7 +2242,7 @@
     </div>
   </section>
 
-  <!-- 47 · 8.2.4 – 8.2.5 -->
+  <!-- 48 · 8.2.4 – 8.2.5 -->
   <section class="slide" data-title="8.2.4 – 8.2.5 Documentation Links &amp; Access">
     <span class="kicker">Clause 8.2 · Management System Documentation (continued)</span>
     <h2>Documentation links &amp; access</h2>
@@ -2216,7 +2279,7 @@
     </div>
   </section>
 
-  <!-- 48 · 8.3.1 – 8.3.2 -->
+  <!-- 49 · 8.3.1 – 8.3.2 -->
   <section class="slide" data-title="8.3.1 – 8.3.2 Control of Documents">
     <span class="kicker">Clause 8.3 · Control of Management System Documents</span>
     <h2>Control of documents</h2>
@@ -2241,7 +2304,7 @@
     </div>
   </section>
 
-  <!-- 49 · 8.4.1 – 8.4.2 -->
+  <!-- 50 · 8.4.1 – 8.4.2 -->
   <section class="slide" data-title="8.4.1 – 8.4.2 Control of Records">
     <span class="kicker">Clause 8.4 · Control of Records</span>
     <h2>Control of records</h2>
@@ -2279,7 +2342,7 @@
     </div>
   </section>
 
-  <!-- 50 · 8.5.1 – 8.5.3 -->
+  <!-- 51 · 8.5.1 – 8.5.3 -->
   <section class="slide" data-title="8.5.1 – 8.5.3 Risks &amp; Opportunities">
     <span class="kicker">Clause 8.5 · Actions to Address Risks &amp; Opportunities</span>
     <h2>Risks and opportunities</h2>
@@ -2316,7 +2379,7 @@
     </div>
   </section>
 
-  <!-- 51 · 8.6.1 – 8.6.2 -->
+  <!-- 52 · 8.6.1 – 8.6.2 -->
   <section class="slide" data-title="8.6.1 – 8.6.2 Improvement">
     <span class="kicker">Clause 8.6 · Improvement</span>
     <h2>Improvement</h2>
@@ -2353,7 +2416,7 @@
     </div>
   </section>
 
-  <!-- 52 · 8.7.1 – 8.7.3 -->
+  <!-- 53 · 8.7.1 – 8.7.3 -->
   <section class="slide" data-title="8.7.1 – 8.7.3 Corrective Action">
     <span class="kicker">Clause 8.7 · Corrective Action</span>
     <h2>Corrective action</h2>
@@ -2393,7 +2456,7 @@
     </div>
   </section>
 
-  <!-- 53 · 8.8.1 – 8.8.2 -->
+  <!-- 54 · 8.8.1 – 8.8.2 -->
   <section class="slide" data-title="8.8.1 – 8.8.2 Internal Audits">
     <span class="kicker">Clause 8.8 · Internal Audits</span>
     <h2>Internal audits</h2>
@@ -2432,7 +2495,7 @@
     </div>
   </section>
 
-  <!-- 54 · 8.9.1 – 8.9.3 -->
+  <!-- 55 · 8.9.1 – 8.9.3 -->
   <section class="slide" data-title="8.9.1 – 8.9.3 Management Reviews">
     <span class="kicker">Clause 8.9 · Management Reviews</span>
     <h2>Management reviews</h2>
@@ -2484,34 +2547,34 @@
     </div>
   </section>
 
-  <!-- 55 · SUMMARY -->
+  <!-- 56 · SUMMARY -->
   <section class="slide title-slide" data-title="Summary &amp; Close">
     <span class="kicker">Summary</span>
-    <h1 style="font-size:34px;">Key takeaways</h1>
+    <h1 style="font-size:38px;">Key takeaways</h1>
     <div class="rule"></div>
-    <ul style="list-style:none;padding:0;max-width:900px;">
-      <li style="padding:6px 0 6px 24px;position:relative;font-size:15px;border-bottom:1px dashed #eaf0f6;">
-        <span style="position:absolute;left:0;top:6px;color:#1479c9;font-weight:700;">▸</span>
+    <ul style="list-style:none;padding:0;max-width:960px;">
+      <li style="padding:8px 0 8px 28px;position:relative;font-size:17px;border-bottom:1px dashed #eaf0f6;color:#000;">
+        <span style="position:absolute;left:0;top:8px;color:#1479c9;font-weight:800;">▸</span>
         <b>Clause 4</b> — Impartiality and confidentiality are ongoing obligations.
       </li>
-      <li style="padding:6px 0 6px 24px;position:relative;font-size:15px;border-bottom:1px dashed #eaf0f6;">
-        <span style="position:absolute;left:0;top:6px;color:#1479c9;font-weight:700;">▸</span>
+      <li style="padding:8px 0 8px 28px;position:relative;font-size:17px;border-bottom:1px dashed #eaf0f6;color:#000;">
+        <span style="position:absolute;left:0;top:8px;color:#1479c9;font-weight:800;">▸</span>
         <b>Clause 5</b> — The laboratory must be a legal entity with a defined, documented scope and clear responsibilities.
       </li>
-      <li style="padding:6px 0 6px 24px;position:relative;font-size:15px;border-bottom:1px dashed #eaf0f6;">
-        <span style="position:absolute;left:0;top:6px;color:#1479c9;font-weight:700;">▸</span>
+      <li style="padding:8px 0 8px 28px;position:relative;font-size:17px;border-bottom:1px dashed #eaf0f6;color:#000;">
+        <span style="position:absolute;left:0;top:8px;color:#1479c9;font-weight:800;">▸</span>
         <b>Clause 6</b> — Competent people, suitable facilities, calibrated equipment, unbroken traceability and controlled external providers.
       </li>
-      <li style="padding:6px 0 6px 24px;position:relative;font-size:15px;border-bottom:1px dashed #eaf0f6;">
-        <span style="position:absolute;left:0;top:6px;color:#1479c9;font-weight:700;">▸</span>
+      <li style="padding:8px 0 8px 28px;position:relative;font-size:17px;border-bottom:1px dashed #eaf0f6;color:#000;">
+        <span style="position:absolute;left:0;top:8px;color:#1479c9;font-weight:800;">▸</span>
         <b>Clause 7</b> — The technical process: valid methods, controlled records, sound uncertainty, valid results and defensible reports.
       </li>
-      <li style="padding:6px 0 6px 24px;position:relative;font-size:15px;border-bottom:1px dashed #eaf0f6;">
-        <span style="position:absolute;left:0;top:6px;color:#1479c9;font-weight:700;">▸</span>
+      <li style="padding:8px 0 8px 28px;position:relative;font-size:17px;border-bottom:1px dashed #eaf0f6;color:#000;">
+        <span style="position:absolute;left:0;top:8px;color:#1479c9;font-weight:800;">▸</span>
         <b>Clause 8</b> — A living management system: risks, improvement, corrective action, internal audits and management review.
       </li>
-      <li style="padding:6px 0 6px 24px;position:relative;font-size:15px;">
-        <span style="position:absolute;left:0;top:6px;color:#1479c9;font-weight:700;">▸</span>
+      <li style="padding:8px 0 8px 28px;position:relative;font-size:17px;color:#000;">
+        <span style="position:absolute;left:0;top:8px;color:#1479c9;font-weight:800;">▸</span>
         <b>Annexes</b> — Metrological traceability and management system options.
       </li>
     </ul>
@@ -2524,13 +2587,14 @@
 </div>
 
 <div class="progress" id="progress"></div>
-<div class="hint">Tap / click anywhere to advance</div>
+<div class="hint">Tap / click anywhere to advance &nbsp;·&nbsp; Press <b>F</b> for fullscreen</div>
 
 <nav class="hud">
   <div class="title-mini" id="miniTitle">MS ISO/IEC 17025:2017 <span>— Briefing</span></div>
+  <button class="btn" id="fsBtn" title="Toggle fullscreen (F)">⛶ Fullscreen</button>
   <button class="btn" id="menuBtn">☰ Menu</button>
   <button class="btn" id="prevBtn">← Prev</button>
-  <div class="counter" id="counter">1 / 55</div>
+  <div class="counter" id="counter">1 / 56</div>
   <button class="btn" id="nextBtn">Next →</button>
 </nav>
 
@@ -2551,6 +2615,7 @@
   const miniTitle= document.getElementById('miniTitle');
   const menu     = document.getElementById('menu');
   const menuGrid = document.getElementById('menuGrid');
+  const fsBtn    = document.getElementById('fsBtn');
   let idx = 0;
 
   /* Build menu */
@@ -2586,6 +2651,21 @@
   function openMenu(){ menu.classList.add('open'); }
   function closeMenu(){ menu.classList.remove('open'); }
 
+  /* ---- FULLSCREEN ---- */
+  function toggleFullscreen(){
+    const el = document.documentElement;
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      else if (document.msExitFullscreen) document.msExitFullscreen();
+    }
+  }
+  fsBtn.addEventListener('click', function(e){ e.stopPropagation(); toggleFullscreen(); });
+
   /* HUD buttons */
   nextBtn.addEventListener('click', function(e){ e.stopPropagation(); next(); });
   prevBtn.addEventListener('click', function(e){ e.stopPropagation(); prev(); });
@@ -2609,6 +2689,7 @@
     else if (e.key === 'Home') { e.preventDefault(); go(0); }
     else if (e.key === 'End') { e.preventDefault(); go(total - 1); }
     else if (e.key === 'm' || e.key === 'M') { menu.classList.contains('open') ? closeMenu() : openMenu(); }
+    else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
     else if (e.key === 'Escape') { closeMenu(); }
   });
 
